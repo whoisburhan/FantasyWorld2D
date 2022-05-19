@@ -271,7 +271,7 @@ namespace CharacterCreator2D
         {
             SortingGroup sortinggroup = GetComponent<SortingGroup>();
             sortinggroup.enabled = false;
-            sortinggroup.enabled = true;
+            //sortinggroup.enabled = true;
         }
 
         private void refreshPartSlots()
