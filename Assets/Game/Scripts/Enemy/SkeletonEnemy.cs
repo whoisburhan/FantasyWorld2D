@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GS.FanstayWorld2D;
 
 namespace GS.FanstayWorld2D.Enemy
 {
@@ -13,6 +14,8 @@ namespace GS.FanstayWorld2D.Enemy
         private int idle, walk, attack, die, hurt, enemyNo;
 
         [SerializeField] SkeletonEnemyType skeletonEnemyType;
+        [SerializeField] private GameObject fireBallPrefab;
+        [SerializeField] private Transform fireBallSpawnPoint;
 
         private void Start()
         {
@@ -71,6 +74,20 @@ namespace GS.FanstayWorld2D.Enemy
         {
             base.DeathAnimation();
             animator.SetTrigger(die);
+        }
+
+        public void Attack()
+        {
+            GameObject go = Instantiate(fireBallPrefab,fireBallSpawnPoint.position, Quaternion.identity);
+            
+            Player.ArrowShot attackScript = go.GetComponent<Player.ArrowShot>();
+
+            if(attackScript != null)
+            {
+                attackScript.Direction = sr.flipX ? Vector2.left : transform.localScale.x > 0 ? Vector2.right :Vector2.left;
+            }
+
+            Destroy(go, 2f);
         }
 
     }

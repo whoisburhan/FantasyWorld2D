@@ -10,7 +10,7 @@ namespace GS.FanstayWorld2D.Player
         private void OnTriggerEnter2D(Collider2D col)
         {
             Transform parent = transform.parent;
-            Debug.Log("OK");
+
             if (col.CompareTag("Climable"))
             {
                 PlayerConstant.Instance.CanClimb = true;

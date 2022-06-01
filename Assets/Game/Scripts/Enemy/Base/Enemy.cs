@@ -17,7 +17,7 @@ namespace GS.FanstayWorld2D.Enemy
         protected Animator animator;
         protected int health;
 
-        private SpriteRenderer sr;
+        protected SpriteRenderer sr;
         private bool canCheckState = true;
         private int currentPatrolPoint = 0;
 
@@ -157,9 +157,14 @@ namespace GS.FanstayWorld2D.Enemy
         {
             bool isDirectionLeft = target.x - transform.position.x < 0f;
 
-            if (isDirectionLeft != sr.flipX)
+            // if (isDirectionLeft != sr.flipX)
+            // {
+            //     sr.flipX = isDirectionLeft;
+            // }
+
+            if((transform.localScale.x > 0f && isDirectionLeft) ||(transform.localScale.x < 0f && !isDirectionLeft))
             {
-                sr.flipX = isDirectionLeft;
+                transform.localScale =  new Vector3(transform.localScale.x * -1f, transform.localScale.y);
             }
         }
         protected virtual void IdleState()
@@ -171,11 +176,8 @@ namespace GS.FanstayWorld2D.Enemy
         {
             transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPatrolPoint], chaseSpeed * Time.deltaTime);
 
-            Debug.Log($"111 : Distance is {Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint])}");
-
             if (Vector3.Distance(transform.position, patrolPoints[currentPatrolPoint]) <= 0.3f)
             {
-                Debug.Log(currentPatrolPoint);
                 currentPatrolPoint = changePatrolPoint();
             }
 
