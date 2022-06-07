@@ -7,7 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     public static PlayerAnimation Instance { get; private set; }
     [SerializeField] private Animator animator;
 
-    int run, sprint, jump, grounded, canClimb, climbUp,climbDown, weaponType, attack;
+    int run, sprint, jump, grounded, canClimb, climbUp,climbDown, weaponType, attack, swime;
     private void Awake()
     {
         if (Instance == null)
@@ -31,6 +31,7 @@ public class PlayerAnimation : MonoBehaviour
         climbDown = Animator.StringToHash("_ClimbDown");
         weaponType = Animator.StringToHash("_WeaponType");
         attack = Animator.StringToHash("_Attack");
+        swime = Animator.StringToHash("_Swime");
     }
 
     public void Run()
@@ -100,4 +101,12 @@ public class PlayerAnimation : MonoBehaviour
 
     #endregion
 
+    #region  Swime
+
+    public void CanSwime(bool can)
+    {
+        animator.SetBool(swime,can);
+    }
+    
+    #endregion
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Climable
   - UpLift
+  - Water
   layers:
   - Default
   - TransparentFX
