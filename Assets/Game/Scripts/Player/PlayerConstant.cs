@@ -11,31 +11,34 @@ namespace GS.FanstayWorld2D.Player
         Land, Water, UI
     }
 
+    public enum PlayerType
+    {
+        Human = 0, Mermaid, Cursed_Ball
+    }
+
     public class PlayerConstant : MonoBehaviour
     {
         public static PlayerConstant Instance { get; private set; }
 
         public ActionMaps CurrentActionMap { get; private set; }
 
+        public static Action OnCharacterChange;
+
         [SerializeField] private Rigidbody2D playerRigidbodyMain;
         [SerializeField] private CharacterViewer characterviewer;
 
-        [Header("Player Colliders")]
+        [Header("CharacterController")]
+        [SerializeField] private GameObject humanCharacter;
+        [SerializeField] private GameObject mermaidCharacter;
+        [Header("Human Player Colliders")]
         [SerializeField] private Transform inLandMainCharacterColiderObj;
         [SerializeField] private Transform inWaterMainCharacterColiderObj;
+
+        [Header("Mermaid Player Colliders")]
+        public GameObject MermaidColliderIdle;
+        public GameObject MermaidColliderRun;
+        [Space]
         public bool IsPlayerDead = false;
-        public bool CanClimb
-        {
-            get { return canClimb; }
-            set
-            {
-                canClimb = value;
-                playerRigidbodyMain.isKinematic = canClimb ? true : false;
-                playerRigidbodyMain.velocity = Vector2.zero;
-                CanAttack = !canClimb;
-            }
-        }
-        private bool canClimb = false;
 
         public bool CanSwime
         {
@@ -50,6 +53,50 @@ namespace GS.FanstayWorld2D.Player
         }
 
         private bool canSwime = false;
+
+        public PlayerType GamePlayerType
+        {
+            get { return playerType; }
+            set
+            {
+                playerType = value;
+
+                if (value == PlayerType.Human)
+                {
+                    //humanCharacter.SetActive(true);
+                    characterviewer.TintColor = new Color(characterviewer.TintColor.r, characterviewer.TintColor.g, characterviewer.TintColor.b, 1f);
+                    mermaidCharacter.SetActive(false);
+                    CanSwime = true;
+                }
+                else if (value == PlayerType.Mermaid)
+                {
+                    PlayerAnimation.Instance.CanSwime(false);
+                    mermaidCharacter.SetActive(true);
+                    characterviewer.TintColor = new Color(characterviewer.TintColor.r, characterviewer.TintColor.g, characterviewer.TintColor.b, 0f);
+                    inLandMainCharacterColiderObj.gameObject.SetActive(false);
+                    inWaterMainCharacterColiderObj.gameObject.SetActive(false);
+                   // humanCharacter.SetActive(false);
+                }
+
+                OnCharacterChange?.Invoke();
+            }
+        }
+
+        private PlayerType playerType;
+
+        public bool CanClimb
+        {
+            get { return canClimb; }
+            set
+            {
+                canClimb = value;
+                playerRigidbodyMain.isKinematic = canClimb ? true : false;
+                playerRigidbodyMain.velocity = Vector2.zero;
+                CanAttack = !canClimb;
+            }
+        }
+        private bool canClimb = false;
+
 
         public bool CanAttack = true;
 
@@ -86,7 +133,6 @@ namespace GS.FanstayWorld2D.Player
             {
                 Destroy(this);
             }
-
         }
 
         public void SwitchCurrentActionMap(ActionMaps actionMap)
@@ -94,23 +140,6 @@ namespace GS.FanstayWorld2D.Player
             CurrentActionMap = actionMap;
         }
 
-        // public void UpdateCollider()
-        // {
-        //     if (canSwime)
-        //     {
-
-        //         inWaterMainCharacterColiderObj.SetActive(true);
-
-        //         inLandMainCharacterColiderObj.SetActive(false);
-        //     }
-        //     else
-        //     {
-
-        //         inLandMainCharacterColiderObj.SetActive(true);
-
-        //         inWaterMainCharacterColiderObj.SetActive(false);
-        //     }
-        // }
 
 
     }

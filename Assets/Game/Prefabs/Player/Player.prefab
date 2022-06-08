@@ -55,13 +55,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444875374}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -1.38, y: 0.69, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.38268343, w: 0.92387956}
+  m_LocalPosition: {x: -4.5999994, y: 2.2999992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4884621869532237477}
-  m_RootOrder: 5
+  m_Father: {fileID: 4889092744142314381}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!70 &444875376
 CapsuleCollider2D:
@@ -228,13 +228,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684665515156878807}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4884621869532237477}
-  m_RootOrder: 4
+  m_Father: {fileID: 4889092744142314381}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6470672521759762994
 CapsuleCollider2D:
@@ -292,8 +292,6 @@ Transform:
   - {fileID: 4889092744142314381}
   - {fileID: 4537906710361377862}
   - {fileID: 993108707451265622}
-  - {fileID: 8320664941248996601}
-  - {fileID: 444875375}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -329,6 +327,7 @@ MonoBehaviour:
   ReleaseJump: 0
   SwitchWeapon: 0
   Attack_1: 0
+  Switch_Character: 0
 --- !u!114 &4884621869532237481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4799307154599220691}
+  memaidAnimator: {fileID: 0}
 --- !u!70 &2005806448
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -431,10 +431,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f17d97643f9344a8ef191a84e147cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GamePlayerType: 0
   playerRigidbodyMain: {fileID: 4884621869532237480}
   characterviewer: {fileID: 4781861565137618933}
   inLandMainCharacterColiderObj: {fileID: 684665515156878807}
   inWaterMainCharacterColiderObj: {fileID: 444875374}
+  mermaidColliderIdle: {fileID: 0}
+  mermaidColliderRun: {fileID: 0}
+  mermaidColliderSprint: {fileID: 0}
   IsPlayerDead: 0
   CanAttack: 1
   WeaponList:
@@ -477,7 +481,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8320664941248996601}
+  - {fileID: 444875375}
   m_Father: {fileID: 4884621869532237477}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

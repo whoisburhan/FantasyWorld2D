@@ -23,6 +23,8 @@ namespace GS.FanstayWorld2D.Player
         private float jumpPressedRemember, jumpPressedRememberTime = 0.2f, groundRemember, groundRememberTime = 0.15f;
         private void Update()
         {
+            SwitchCharacter();  // Switch Character
+
             isGrounded = IsGrounded();
 
             jumpPressedRemember -= Time.deltaTime;
@@ -38,10 +40,20 @@ namespace GS.FanstayWorld2D.Player
                 if (Mathf.Abs(PlayerController.Instance.MoveX) >= 1f)
                 {
                     PlayerAnimation.Instance.Run();
+                    if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                    {
+                        PlayerConstant.Instance.MermaidColliderRun.SetActive(true);
+                        PlayerConstant.Instance.MermaidColliderIdle.SetActive(false);     
+                    }
                 }
                 else
                 {
                     PlayerAnimation.Instance.StopRun();
+                    if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                    {
+                        PlayerConstant.Instance.MermaidColliderIdle.SetActive(true);
+                        PlayerConstant.Instance.MermaidColliderRun.SetActive(false);
+                    }
                 }
 
                 if (PlayerController.Instance.Sprint)
@@ -130,18 +142,47 @@ namespace GS.FanstayWorld2D.Player
                 PlayerAnimation.Instance.Grounded();
                 PlayerAnimation.Instance.StopRun();
                 landTouch = true;
-                if(!PlayerConstant.Instance.CanClimb)
+                if (!PlayerConstant.Instance.CanClimb)
                     PlayerConstant.Instance.LandParticles.Play();
             }
 
         }
 
+
         private void FixedUpdate()
         {
             if (!PlayerConstant.Instance.CanClimb)
+            {
                 rb2d.velocity = new Vector2(PlayerController.Instance.MoveX * finalSpeedOffset, rb2d.velocity.y);
+                if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                {
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, PlayerController.Instance.MoveY * climbSpeedOffset);
+                }
+            }
             else
                 rb2d.velocity = new Vector2(rb2d.velocity.x, PlayerController.Instance.MoveY * climbSpeedOffset);
+        }
+
+        private void SwitchCharacter()
+        {
+            if (PlayerConstant.Instance.CanSwime && PlayerController.Instance.Switch_Character)
+            {
+                if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                {
+                    PlayerConstant.Instance.GamePlayerType = PlayerType.Mermaid;
+                    rb2d.gravityScale = 0f;
+                   // rb2d.isKinematic = true;
+                    rb2d.velocity = Vector2.zero;
+
+                }
+                else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                {
+                    PlayerConstant.Instance.GamePlayerType = PlayerType.Human;
+                    rb2d.gravityScale = 10f;
+                   // rb2d.isKinematic = false;
+                    rb2d.velocity = Vector2.zero;
+                }
+            }
         }
 
         private void PlayerDirection()

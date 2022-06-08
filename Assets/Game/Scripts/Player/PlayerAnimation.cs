@@ -2,111 +2,143 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimation : MonoBehaviour
+namespace GS.FanstayWorld2D.Player
 {
-    public static PlayerAnimation Instance { get; private set; }
-    [SerializeField] private Animator animator;
-
-    int run, sprint, jump, grounded, canClimb, climbUp,climbDown, weaponType, attack, swime;
-    private void Awake()
+    public class PlayerAnimation : MonoBehaviour
     {
-        if (Instance == null)
+        public static PlayerAnimation Instance { get; private set; }
+        [SerializeField] private Animator animator;
+        [SerializeField] private Animator memaidAnimator;
+
+        int run, sprint, jump, grounded, canClimb, climbUp, climbDown, weaponType, attack, swime;
+        private void Awake()
         {
-            Instance = this;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
-        else
+
+        private void Start()
         {
-            Destroy(this);
+            run = Animator.StringToHash("_Run");
+            sprint = Animator.StringToHash("_Sprint");
+            jump = Animator.StringToHash("_Jump");
+            grounded = Animator.StringToHash("_IsGrounded");
+            canClimb = Animator.StringToHash("_Climb");
+            climbUp = Animator.StringToHash("_ClimbUp");
+            climbDown = Animator.StringToHash("_ClimbDown");
+            weaponType = Animator.StringToHash("_WeaponType");
+            attack = Animator.StringToHash("_Attack");
+            swime = Animator.StringToHash("_Swime");
         }
+
+        public void ForcefullyIdle()
+        {
+            animator.Play("Idle");
+        }
+
+        public void Run()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(run, true);
+            else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                memaidAnimator.SetBool(run, true);
+        }
+
+        public void Sprint()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(sprint, true);
+            else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                memaidAnimator.SetBool(sprint, true);
+        }
+
+        public void StopRun()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(run, false);
+            else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                memaidAnimator.SetBool(run, false);
+        }
+
+        public void StopSprint()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(sprint, false);
+            else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                memaidAnimator.SetBool(sprint, false);
+        }
+
+        public void NotGrounded()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(grounded, false);
+        }
+
+        public void Grounded()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(grounded, true);
+        }
+
+        public void Jump()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetTrigger(jump);
+        }
+
+        #region Climb
+        public void CanClimb(bool can)
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(canClimb, can);
+        }
+
+        public void CanClimbUp(bool can)
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(climbUp, can);
+        }
+
+        public void CanClimbDown(bool can)
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(climbDown, can);
+        }
+
+        #endregion
+
+        #region  Attack
+
+        public void SwitchWeapon(int _weaponType)
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetInteger(weaponType, _weaponType);
+        }
+
+        public void Attack()
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetTrigger(attack);
+            else if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                memaidAnimator.SetTrigger(attack);
+        }
+
+        #endregion
+
+        #region  Swime
+
+        public void CanSwime(bool can)
+        {
+            if (PlayerConstant.Instance.GamePlayerType == PlayerType.Human)
+                animator.SetBool(swime, can);
+        }
+
+        #endregion
     }
-
-    private void Start()
-    {
-        run = Animator.StringToHash("_Run");
-        sprint = Animator.StringToHash("_Sprint");
-        jump = Animator.StringToHash("_Jump");
-        grounded = Animator.StringToHash("_IsGrounded");
-        canClimb = Animator.StringToHash("_Climb");
-        climbUp = Animator.StringToHash("_ClimbUp");
-        climbDown = Animator.StringToHash("_ClimbDown");
-        weaponType = Animator.StringToHash("_WeaponType");
-        attack = Animator.StringToHash("_Attack");
-        swime = Animator.StringToHash("_Swime");
-    }
-
-    public void Run()
-    {
-        animator.SetBool(run, true);
-    }
-
-    public void Sprint()
-    {
-        animator.SetBool(sprint, true);
-    }
-
-    public void StopRun()
-    {
-        animator.SetBool(run, false);
-    }
-
-    public void StopSprint()
-    {
-        animator.SetBool(sprint, false);
-    }
-
-    public void NotGrounded()
-    {
-        animator.SetBool(grounded, false);
-    }
-
-    public void Grounded()
-    {
-        animator.SetBool(grounded, true);
-    }
-
-    public void Jump()
-    {
-        animator.SetTrigger(jump);
-    }
-
-    #region Climb
-    public void CanClimb(bool can)
-    {
-        animator.SetBool(canClimb,can);
-    }
-
-    public void CanClimbUp(bool can)
-    {
-        animator.SetBool(climbUp,can);
-    }
-
-    public void CanClimbDown(bool can)
-    {
-        animator.SetBool(climbDown,can);
-    }
-
-    #endregion
-
-    #region  Attack
-
-    public void SwitchWeapon(int _weaponType)
-    {
-        animator.SetInteger(weaponType, _weaponType);
-    }
-
-    public void Attack()
-    {
-        animator.SetTrigger(attack);
-    }
-
-    #endregion
-
-    #region  Swime
-
-    public void CanSwime(bool can)
-    {
-        animator.SetBool(swime,can);
-    }
-    
-    #endregion
 }

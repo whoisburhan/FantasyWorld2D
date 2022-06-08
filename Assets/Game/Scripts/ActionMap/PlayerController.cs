@@ -9,7 +9,7 @@ namespace GS.FanstayWorld2D.Player
         private PlayerControls playerControls;
 
         [HideInInspector] public float MoveX, MoveY;
-        [HideInInspector] public bool Sprint, Jump, ReleaseJump, SwitchWeapon,Attack_1;
+        [HideInInspector] public bool Sprint, Jump, ReleaseJump, SwitchWeapon, Attack_1, Switch_Character;
 
         private void Awake()
         {
@@ -59,20 +59,21 @@ namespace GS.FanstayWorld2D.Player
 
             SwitchWeapon = playerControls.Land.Switch_Weapon.WasPressedThisFrame();
 
-            if (!PlayerConstant.Instance.CanClimb)
-            {
-                MoveX = playerControls.Land.Move_X.ReadValue<float>();
-                Sprint = playerControls.Land.Sprint.inProgress;
 
-            }
-            else
-            {
-                MoveY = playerControls.Land.Move_Y.ReadValue<float>();
-            }
+            MoveX = playerControls.Land.Move_X.ReadValue<float>();
+            Sprint = playerControls.Land.Sprint.inProgress;
+            MoveY = playerControls.Land.Move_Y.ReadValue<float>();
 
-            if(PlayerConstant.Instance.CanAttack)
+
+
+            if (PlayerConstant.Instance.CanAttack)
             {
                 Attack_1 = playerControls.Land.Attack_1.WasPressedThisFrame();
+            }
+
+            if (PlayerConstant.Instance.CanSwime)
+            {
+                Switch_Character = playerControls.Land.Switch_Character.WasPressedThisFrame();
             }
         }
 

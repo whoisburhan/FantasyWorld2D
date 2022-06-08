@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Switch_Character"",
+                    ""type"": ""Button"",
+                    ""id"": ""778b6611-2b4b-42d6-bc74-07f4f8d8183e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -258,6 +267,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Switch_Weapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""96862620-e9c1-4001-9f04-94413f02051c"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch_Character"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -328,6 +348,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Land_Move_Y = m_Land.FindAction("Move_Y", throwIfNotFound: true);
         m_Land_Attack_1 = m_Land.FindAction("Attack_1", throwIfNotFound: true);
         m_Land_Switch_Weapon = m_Land.FindAction("Switch_Weapon", throwIfNotFound: true);
+        m_Land_Switch_Character = m_Land.FindAction("Switch_Character", throwIfNotFound: true);
         // Water
         m_Water = asset.FindActionMap("Water", throwIfNotFound: true);
         m_Water_Newaction = m_Water.FindAction("New action", throwIfNotFound: true);
@@ -399,6 +420,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_Move_Y;
     private readonly InputAction m_Land_Attack_1;
     private readonly InputAction m_Land_Switch_Weapon;
+    private readonly InputAction m_Land_Switch_Character;
     public struct LandActions
     {
         private @PlayerControls m_Wrapper;
@@ -409,6 +431,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move_Y => m_Wrapper.m_Land_Move_Y;
         public InputAction @Attack_1 => m_Wrapper.m_Land_Attack_1;
         public InputAction @Switch_Weapon => m_Wrapper.m_Land_Switch_Weapon;
+        public InputAction @Switch_Character => m_Wrapper.m_Land_Switch_Character;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -436,6 +459,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Switch_Weapon.started -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
                 @Switch_Weapon.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
                 @Switch_Weapon.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
+                @Switch_Character.started -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Character;
+                @Switch_Character.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Character;
+                @Switch_Character.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Character;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -458,6 +484,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Switch_Weapon.started += instance.OnSwitch_Weapon;
                 @Switch_Weapon.performed += instance.OnSwitch_Weapon;
                 @Switch_Weapon.canceled += instance.OnSwitch_Weapon;
+                @Switch_Character.started += instance.OnSwitch_Character;
+                @Switch_Character.performed += instance.OnSwitch_Character;
+                @Switch_Character.canceled += instance.OnSwitch_Character;
             }
         }
     }
@@ -536,6 +565,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove_Y(InputAction.CallbackContext context);
         void OnAttack_1(InputAction.CallbackContext context);
         void OnSwitch_Weapon(InputAction.CallbackContext context);
+        void OnSwitch_Character(InputAction.CallbackContext context);
     }
     public interface IWaterActions
     {
