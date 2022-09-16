@@ -11,6 +11,9 @@ namespace GS.FanstayWorld2D.Player
         [HideInInspector] public float MoveX, MoveY;
         [HideInInspector] public bool Sprint, Jump, ReleaseJump, SwitchWeapon, Attack_1, Switch_Character;
 
+        public bool CanInput = true;
+        public bool AutoRun = false;
+
         private void Awake()
         {
             if (Instance == null)
@@ -38,17 +41,25 @@ namespace GS.FanstayWorld2D.Player
 
         private void Update()
         {
-            switch (PlayerConstant.Instance.CurrentActionMap)
+            if (CanInput)
             {
-                case ActionMaps.Land:
-                    ActionMap_Land();
-                    break;
-                case ActionMaps.Water:
-                    ActionMap_Water();
-                    break;
-                case ActionMaps.UI:
-                    ActionMap_UI();
-                    break;
+                switch (PlayerConstant.Instance.CurrentActionMap)
+                {
+                    case ActionMaps.Land:
+                        ActionMap_Land();
+                        break;
+                    case ActionMaps.Water:
+                        ActionMap_Water();
+                        break;
+                    case ActionMaps.UI:
+                        ActionMap_UI();
+                        break;
+                }
+            }
+
+            if(AutoRun)
+            {
+                MoveX =  1f;    // Can be used in cutscene
             }
         }
 
@@ -60,7 +71,7 @@ namespace GS.FanstayWorld2D.Player
             SwitchWeapon = playerControls.Land.Switch_Weapon.WasPressedThisFrame();
 
 
-            MoveX = playerControls.Land.Move_X.ReadValue<float>();
+            MoveX =  playerControls.Land.Move_X.ReadValue<float>();
             Sprint = playerControls.Land.Sprint.inProgress;
             MoveY = playerControls.Land.Move_Y.ReadValue<float>();
 
