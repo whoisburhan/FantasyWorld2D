@@ -13,6 +13,7 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
             {
                 PlayerController.Instance.CanInput = true;
                 PlayerController.Instance.AutoRun = false;
+                CutSceneCanvasScript.Instance.EndCutScene();
             }
         }
     }

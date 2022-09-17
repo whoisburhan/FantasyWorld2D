@@ -12,7 +12,7 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
             if(col.CompareTag("Player"))
             {
                 PlayerController.Instance.CanInput = false;
-                PlayerController.Instance.AutoRun = true;
+                CutSceneCanvasScript.Instance.StartCutscene(()=>{PlayerController.Instance.AutoRun = true;});
             }
         }
     }
