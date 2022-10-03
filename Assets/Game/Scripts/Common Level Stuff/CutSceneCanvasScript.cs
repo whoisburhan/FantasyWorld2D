@@ -54,14 +54,14 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
 
         public void StartLevel(Action action = null)
         {
-            topPanel.DOMove(topPanelLevelOffset.position, cutSceneAnimationBarDuration).OnComplete(()=>{action?.Invoke();});;
-            bottomPanel.DOMove(bottomPanelLevelOffset.position, cutSceneAnimationBarDuration);
+            topPanel.DOMove(topPanelLevelOffset.position, levelChangeAnimationBarDuration).OnComplete(()=>{action?.Invoke();});;
+            bottomPanel.DOMove(bottomPanelLevelOffset.position, levelChangeAnimationBarDuration);
         }
 
         public void EndLevel(Action action = null)
         {
-            topPanel.DOMove(topPanelDefaultOffset.position, cutSceneAnimationBarDuration).OnComplete(()=>{action?.Invoke();});;
-            bottomPanel.DOMove(bottomPanelDefaultOffset.position, cutSceneAnimationBarDuration);
+            topPanel.DOMove(topPanelLevelOffset.position, levelChangeAnimationBarDuration).OnComplete(()=>{action?.Invoke();});;
+            bottomPanel.DOMove(bottomPanelLevelOffset.position, levelChangeAnimationBarDuration);
         }
     }
 }

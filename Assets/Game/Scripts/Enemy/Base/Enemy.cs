@@ -110,6 +110,7 @@ namespace GS.FanstayWorld2D.Enemy
                 {
                     previousEnemyState = enemyState;
                     enemyState = EnemyState.Attack;
+                    chaseObjectTransform = attackZoneDetectedObj[0].transform;
                 }
             }
             else
