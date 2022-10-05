@@ -20,6 +20,7 @@ MonoBehaviour:
       speakerType: 0
     sentences:
     - Hi
+    - My Name Is Sarah
   - dialogueBoxSide: 1
     speakerInfo:
       speakerImg: {fileID: 21300000, guid: 3b31b14d6fb808b4ab1f87848b049b6c, type: 3}
@@ -28,9 +29,20 @@ MonoBehaviour:
     sentences:
     - Hi
     - I am Lyla
+    - Nice to meet you Sarah
   - dialogueBoxSide: 0
     speakerInfo:
-      speakerImg: {fileID: 0}
-      speakerName: 
+      speakerImg: {fileID: 21300000, guid: a44d12e54ce38d94b997d3928aec9a3e, type: 3}
+      speakerName: Sarah
       speakerType: 0
-    sentences: []
+    sentences:
+    - Nice to meet you too.
+    - Thank you
+  - dialogueBoxSide: 1
+    speakerInfo:
+      speakerImg: {fileID: 21300000, guid: a44d12e54ce38d94b997d3928aec9a3e, type: 3}
+      speakerName: Tania
+      speakerType: 2
+    sentences:
+    - oh hi I am Tania
+    - Lyla is just left for some work

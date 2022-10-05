@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using System;
 
 namespace GS.Dialogue
 {
+    [RequireComponent(typeof(DialogueController))]
     public class DialogueScript : MonoBehaviour
     {
         #region Primary
         [Header("Primary")]
         [SerializeField] private CanvasGroup dialogueCanvasGroup;
         [SerializeField] private Button primarySkipButton;
+        [SerializeField] private float animationDuration = 0.5f;
         #endregion
 
         #region  Dialogue Box 1
         [Header("Dialogue Box - 1")]
+        [SerializeField] private Transform dialogueBox1;
+        [Space]
+        [SerializeField] private Transform dialogueBox1StartPos;
+        [SerializeField] private Transform dialogueBox1EndPos;
+        [Space]
         [SerializeField] private Image dialogueBox1SpeakerImg;
         [SerializeField] private Text dialogueBox1SpeakerName;
         [SerializeField] private Image dialgueBox1SpeakerNameHolder;
@@ -25,6 +34,11 @@ namespace GS.Dialogue
 
         #region  Dialogue Box 2
         [Header("Dialogue Box - 2")]
+        [SerializeField] private Transform dialogueBox2;
+        [Space]
+        [SerializeField] private Transform dialogueBox2StartPos;
+        [SerializeField] private Transform dialogueBox2EndPos;
+        [Space]
         [SerializeField] private Image dialogueBox2SpeakerImg;
         [SerializeField] private Text dialogueBox2SpeakerName;
         [SerializeField] private Image dialgueBox2SpeakerNameHolder;
@@ -33,22 +47,83 @@ namespace GS.Dialogue
         [SerializeField] private Image dialogueBox2SkipButtonHint;
         #endregion
 
+        public Action OnNextButtonPressed;
+        public Action OnSkipButtonPressed;
 
-        private void Update()
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.A)) DisplaySpeech("My Name is Sarah! I love jeans...", dialogueBox1SpeakerSpeech);
-            if (Input.GetKeyDown(KeyCode.S)) DisplaySpeech("My favourite color is green", dialogueBox1SpeakerSpeech);
-            if (Input.GetKeyDown(KeyCode.D)) DisplaySpeech("Great i love jeans too", dialogueBox2SpeakerSpeech);
-            if (Input.GetKeyDown(KeyCode.F)) DisplaySpeech("I wear belt with jeans", dialogueBox2SpeakerSpeech);
-
+            InitButtonFunc();
+            primarySkipButton.gameObject.SetActive(false);
         }
 
+        private void InitButtonFunc()
+        {
+            dialogueBox1SkipButton.onClick.AddListener(() => { OnNextButtonPressed?.Invoke(); });
+            dialogueBox2SkipButton.onClick.AddListener(() => { OnNextButtonPressed?.Invoke(); });
+
+            primarySkipButton.onClick.AddListener(() => { OnSkipButtonPressed?.Invoke(); });
+        }
+
+        #region Dialogue Canvas Animation
+
+        public void ResetDialogueBoxPos()
+        {
+            dialogueBox1.position = dialogueBox1StartPos.position;
+            dialogueBox2.position = dialogueBox2StartPos.position;
+        }
+
+        public void StartDialogueAnimation(Action action = null)
+        {
+            ResetDialogueBoxPos();
+
+            dialogueCanvasGroup.alpha = 1f;
+            dialogueCanvasGroup.blocksRaycasts = true;
+            dialogueCanvasGroup.interactable = true;
+
+            dialogueBox1.DOMove(dialogueBox1EndPos.position, animationDuration).OnComplete(() =>
+            {
+                action?.Invoke();
+                primarySkipButton.gameObject.SetActive(true);
+            });
+            dialogueBox2.DOMove(dialogueBox2EndPos.position, animationDuration);
+        }
+
+        public void EndDialogueAnimation(Action action = null)
+        {
+            dialogueBox1.DOMove(dialogueBox1StartPos.position, animationDuration).OnComplete(() =>
+            {
+                dialogueCanvasGroup.alpha = 0f;
+                dialogueCanvasGroup.blocksRaycasts = false;
+                dialogueCanvasGroup.interactable = false;
+
+                action?.Invoke();
+                primarySkipButton.gameObject.SetActive(false);
+            });
+            dialogueBox2.DOMove(dialogueBox2StartPos.position, animationDuration);
+        }
+
+        #endregion
 
         #region  Speech Display
         string previousSpeech;
         Text previousSpeekerText;
-        public void DisplaySpeech(string speech, Text speekerText)
+
+        public void DisplaySpeech(string speech, DialogueBoxSide dialogueBoxSide)
         {
+            switch (dialogueBoxSide)
+            {
+                case DialogueBoxSide.DialogueBox_Left:
+                    DisplaySpeech(speech, dialogueBox1SpeakerSpeech);
+                    break;
+                case DialogueBoxSide.DialogueBox_Right:
+                    DisplaySpeech(speech, dialogueBox2SpeakerSpeech);
+                    break;
+            }
+        }
+        private void DisplaySpeech(string speech, Text speekerText)
+        {
+            Debug.Log($"ENTER view.DisplaySpeech(sentence, dialogueBoxSide);");
+            Debug.Log($"{speech}");
             if (previousSpeech != null)
                 previousSpeekerText.text = previousSpeech;
 
@@ -76,13 +151,13 @@ namespace GS.Dialogue
 
         public void UpdateSpeakerInfo(Sprite speakerImg, string speakerName, SpeakerType speakerType, DialogueBoxSide dialogueBoxSide)
         {
-            UpdateSpeakerImg(speakerImg,dialogueBoxSide);
-            UpdateSpeakerNameAndType(speakerName,speakerType,dialogueBoxSide);
+            UpdateSpeakerImg(speakerImg, dialogueBoxSide);
+            UpdateSpeakerNameAndType(speakerName, speakerType, dialogueBoxSide);
         }
 
         private void UpdateSpeakerImg(Sprite speakerImg, DialogueBoxSide dialogueBoxSide)
         {
-            switch(dialogueBoxSide)
+            switch (dialogueBoxSide)
             {
                 case DialogueBoxSide.DialogueBox_Left:
                     dialogueBox1SpeakerImg.sprite = speakerImg;
@@ -91,12 +166,12 @@ namespace GS.Dialogue
                     dialogueBox2SpeakerImg.sprite = speakerImg;
                     break;
             }
-           
+
         }
 
         private void UpdateSpeakerNameAndType(string speakerName, SpeakerType speakerType, DialogueBoxSide dialogueBoxSide)
         {
-            switch(dialogueBoxSide)
+            switch (dialogueBoxSide)
             {
                 case DialogueBoxSide.DialogueBox_Left:
                     dialogueBox1SpeakerName.text = speakerName;
@@ -118,12 +193,21 @@ namespace GS.Dialogue
 
         private void Reset()
         {
+            ResetDialogueBoxPos();
+
             dialogueBox1SpeakerImg.sprite = null;
             dialogueBox1SpeakerName.text = "";
             dialgueBox1SpeakerNameHolder.color = Color.white;
             dialogueBox1SpeakerSpeech.text = "";
             dialogueBox1SkipButton.gameObject.SetActive(false);
             dialogueBox1SkipButtonHint.gameObject.SetActive(false);
+
+            dialogueBox2SpeakerImg.sprite = null;
+            dialogueBox2SpeakerName.text = "";
+            dialgueBox2SpeakerNameHolder.color = Color.white;
+            dialogueBox2SpeakerSpeech.text = "";
+            dialogueBox2SkipButton.gameObject.SetActive(false);
+            dialogueBox2SkipButtonHint.gameObject.SetActive(false);
         }
 
     }

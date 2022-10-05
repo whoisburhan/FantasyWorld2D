@@ -597,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -91.9, y: 50.4}
+  m_AnchoredPosition: {x: -91.8999, y: 50.400024}
   m_SizeDelta: {x: 109.7411, y: 32.2402}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &971100029986321189
@@ -718,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -487, y: 208}
+  m_AnchoredPosition: {x: 500, y: 208}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2868569678477249047
@@ -877,6 +877,42 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: NEXT
+--- !u!1 &4519206045012766870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6913388107113118217}
+  m_Layer: 5
+  m_Name: '[POS] DialogueBox_1 END'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6913388107113118217
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4519206045012766870}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8292427375964610730}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 487, y: 208}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4743875321390986342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1065,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5467030133264391965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1765025040784093848}
+  m_Layer: 5
+  m_Name: '[POS] DialogueBox_2 END'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1765025040784093848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5467030133264391965}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8292427375964610730}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -487, y: 208}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6235675728827915815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,7 +1332,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Who are you ?
+  m_Text: 
 --- !u!1 &7250946287810466511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1490,42 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: SKIP >>
+--- !u!1 &7873101864588567781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2687765612396554899}
+  m_Layer: 5
+  m_Name: '[POS] DialogueBox_2 Start'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2687765612396554899
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873101864588567781}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8292427375964610730}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 500, y: 208}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7883153086688700259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,6 +1603,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8227576040007609854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8520695836247172570}
+  m_Layer: 5
+  m_Name: '[POS] DialogueBox_1 Start'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8520695836247172570
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227576040007609854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8292427375964610730}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -500, y: 208}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8292427374394759590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 487, y: 208}
+  m_AnchoredPosition: {x: -500, y: 208}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8292427374657350599
@@ -2077,7 +2221,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Who are you ?
+  m_Text: 
 --- !u!1 &8292427375964610726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2236,7 @@ GameObject:
   - component: {fileID: 8292427375964610727}
   - component: {fileID: 7767680148533371991}
   - component: {fileID: 4553946476070332337}
+  - component: {fileID: 200289383313651465}
   m_Layer: 5
   m_Name: DialogueCanvas
   m_TagString: Untagged
@@ -2116,6 +2261,10 @@ RectTransform:
   - {fileID: 8292427376217677859}
   - {fileID: 8292427374394759591}
   - {fileID: 2274321767275258308}
+  - {fileID: 6913388107113118217}
+  - {fileID: 1765025040784093848}
+  - {fileID: 8520695836247172570}
+  - {fileID: 2687765612396554899}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2211,18 +2360,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueCanvasGroup: {fileID: 7767680148533371991}
   primarySkipButton: {fileID: 4783375901295462907}
+  animationDuration: 0.5
+  dialogueBox1: {fileID: 8292427374394759591}
+  dialogueBox1StartPos: {fileID: 8520695836247172570}
+  dialogueBox1EndPos: {fileID: 6913388107113118217}
   dialogueBox1SpeakerImg: {fileID: 8292427375677369932}
   dialogueBox1SpeakerName: {fileID: 8292427375333142810}
   dialgueBox1SpeakerNameHolder: {fileID: 8292427375060920344}
   dialogueBox1SpeakerSpeech: {fileID: 8292427375769045152}
   dialogueBox1SkipButton: {fileID: 111934557}
   dialogueBox1SkipButtonHint: {fileID: 323003909}
+  dialogueBox2: {fileID: 2274321767275258308}
+  dialogueBox2StartPos: {fileID: 2687765612396554899}
+  dialogueBox2EndPos: {fileID: 1765025040784093848}
   dialogueBox2SpeakerImg: {fileID: 8098732734214263811}
   dialogueBox2SpeakerName: {fileID: 3843603603837535361}
   dialgueBox2SpeakerNameHolder: {fileID: 6249183827767369201}
   dialogueBox2SpeakerSpeech: {fileID: 4150175096269883856}
   dialogueBox2SkipButton: {fileID: 3375913381157416505}
   dialogueBox2SkipButtonHint: {fileID: 5324354270123848457}
+--- !u!114 &200289383313651465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292427375964610726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c235891147c34e84682b796d1221c487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8292427376217677858
 GameObject:
   m_ObjectHideFlags: 0
