@@ -6,7 +6,7 @@ using System;
 
 namespace GS.Dialogue
 {
-    [CreateAssetMenu(fileName = "Conversation - 0", menuName = "Dialogue/Conversation", order = 1)]
+    [CreateAssetMenu(fileName = "Conversation - 0", menuName = "GS/Dialogue", order = 1)]
     public class DialogueData : ScriptableObject
     {
         public List<Segment> segments;
