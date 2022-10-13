@@ -40,7 +40,7 @@ MonoBehaviour:
     - Thank you
   - dialogueBoxSide: 1
     speakerInfo:
-      speakerImg: {fileID: 21300000, guid: a44d12e54ce38d94b997d3928aec9a3e, type: 3}
+      speakerImg: {fileID: 21300000, guid: 34c54d5552058734985c10f00b9ee54d, type: 3}
       speakerName: Tania
       speakerType: 2
     sentences:

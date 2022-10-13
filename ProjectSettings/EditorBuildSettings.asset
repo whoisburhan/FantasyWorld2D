@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/New/UI/UI.unity
     guid: df6a2ef17e2682246a9d92b44fde5b6f
+  - enabled: 1
+    path: Assets/CharacterCreator2D/Creator UI/Creator UI.unity
+    guid: 052aa07681e0d3a48bbcba2afad67a6e
   m_configObjects: {}

@@ -18,22 +18,30 @@ namespace GS.FanstayWorld2D.UI
         {
             base.Awake();
             uIPanel = GetComponent<UIPanel>();
-            if(uIPanel == null)
+            if (uIPanel == null)
                 uIPanel = this.gameObject.AddComponent<UIPanel>();
         }
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.B))
                 uIPanel.HidePanel();
-            if(Input.GetKeyDown(KeyCode.V))
+            if (Input.GetKeyDown(KeyCode.V))
                 uIPanel.ShowPanel();
         }
 
         public void Init(ItemData itemData)
         {
-            this.itemData = itemData;
-            itemImg.sprite = itemData.generalInfo.displayImg;
+            if (itemData != null)
+            {
+                this.itemData = itemData;
+                itemImg.sprite = itemData.generalInfo.displayImg;
+                uIPanel.ShowPanel();
+            }
+            else
+            {
+                uIPanel.HidePanel();
+            }
         }
         public override void OnDeselect(BaseEventData eventData)
         {

@@ -125,5 +125,17 @@ namespace GS.FanstayWorld2D.UI
         #endregion
     
 
+        #region  Update Shop Slots
+
+        private void UpdateShopSlots(List<ItemData> items)
+        {
+            for(int i = 0; i < itemSlots.Length ; i++)
+            {
+                itemSlots[i].Init(items.Count > i ? items[i] : null);
+            }
+        }
+
+        #endregion
+
     }
 }

@@ -34,9 +34,17 @@ namespace GS.FanstayWorld2D
         public static GameData Instance { get; private set; }
         public SaveState State { get => state; set => state = value; }
 
+        public StoreData storeData;
+
         public int CurrentlySelectedBallIndex = 0;
         public int CurrentlySelectedFieldIndex = 0;
         public int CurrentlySelectedPudIndex = 2;
+        [Space]
+        public int CurrentlySelectedOutfitIndex = 0;
+        public int CurrentlySelectedSwordIndex = 0;
+        public int CurrentlySelectedBowIndex = 0;
+        public int CurrentlySelectedWandIndex = 0;
+        public int CurrentlySelectedMermaidOutfitIndex = 0;
 
         [Header("Logic")]
 
@@ -62,11 +70,11 @@ namespace GS.FanstayWorld2D
 
         private void Start()
         {
-            state = new SaveState();
-            saveFileName = Application.persistentDataPath + "/" + SaveFileName;
-            Debug.Log(saveFileName);
-            formatter = new BinaryFormatter();
-            Load();
+            // state = new SaveState();
+            // saveFileName = Application.persistentDataPath + "/" + SaveFileName;
+            // Debug.Log(saveFileName);
+            // formatter = new BinaryFormatter();
+            // Load();
         }
 
         public void Save()
@@ -99,16 +107,18 @@ namespace GS.FanstayWorld2D
             {
                 Debug.Log("No file found, creating new entry...");
                 state.TotalCoin = 2500;
-               // UIManager.Instance.FirstTimeGameOn = true;
+                // UIManager.Instance.FirstTimeGameOn = true;
                 Save();
             }
         }
 
         private void SelectedItemFinder()
         {
-            CurrentlySelectedBallIndex = GetSelectedItemIndex(State.Balls);
-            CurrentlySelectedFieldIndex = GetSelectedItemIndex(state.Grounds);
-            CurrentlySelectedPudIndex = GetSelectedItemIndex(state.Puds);
+            CurrentlySelectedOutfitIndex = GetSelectedItemIndex(State.Outfits);
+            CurrentlySelectedSwordIndex = GetSelectedItemIndex(State.Swords);
+            CurrentlySelectedBowIndex = GetSelectedItemIndex(State.Bow);
+            CurrentlySelectedWandIndex = GetSelectedItemIndex(State.Wand);
+            CurrentlySelectedMermaidOutfitIndex = GetSelectedItemIndex(State.Mermaid);
         }
 
         private int GetSelectedItemIndex(int[] itemList)
