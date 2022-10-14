@@ -8,8 +8,8 @@ namespace GS.FanstayWorld2D
     public class CharacterSetUp : MonoBehaviour
     {
         public CharacterViewer character;
-        private Color a = Color.white;
 
+        #region  Unity Func
         private void Start()
         {
             character.LoadFromJSON("Assets/WHITE_GREEN.json");
@@ -17,11 +17,23 @@ namespace GS.FanstayWorld2D
              Debug.Log($"HEX CODE {ColorUtility.ToHtmlStringRGB(Color.white)}");
         }
 
+        private void OnEnable()
+        {
+            GameData.OnLoadData += OnStoreDataUpdate;
+            GameData.OnSaveData += OnStoreDataUpdate;
+        }
+
+        private void OnDisable()
+        {
+            GameData.OnLoadData -= OnStoreDataUpdate;
+            GameData.OnSaveData -= OnStoreDataUpdate;
+        }
+
         private void Update()
         {
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                character.LoadFromJSON("Assets/WHITE_GREEN.json");
+                character.LoadFromJSON("Assets/BLACK_KNIGHT.json");
             }
             if(Input.GetKeyDown(KeyCode.Alpha2))
             {
@@ -31,6 +43,17 @@ namespace GS.FanstayWorld2D
             {
                 character.EquipPart(SlotCategory.MainHand,"Sword 01");
             }
+        }
+
+        #endregion
+        private void OnStoreDataUpdate(SelectedStoreData data)
+        {
+            UpdateOutfit(data.Outfit.characterViwerData.Path);
+
+            UpdatePlayerWeaponColor(data.Sword.generalInfo.itemType, data.Sword.characterViwerData);
+            UpdatePlayerWeaponColor(data.Bow.generalInfo.itemType, data.Bow.characterViwerData);
+            UpdatePlayerWeaponColor(data.Wand.generalInfo.itemType, data.Wand.characterViwerData);
+            UpdatePlayerWeaponColor(data.MermaidOutfit.generalInfo.itemType, data.MermaidOutfit.characterViwerData);
         }
 
         #region Update Different parts

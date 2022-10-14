@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalInfo:
     Name: RED WINE ARMOR
-    displayImg: {fileID: 21300000, guid: 1e6a3a89c075e534e8a76bc7604c5321, type: 3}
+    displayImg: {fileID: 21300000, guid: 20501a06c9f5ea444a11f11d01ea5509, type: 3}
     protraitImg: {fileID: 0}
     itemType: 0
   shopData:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -29,12 +30,23 @@ namespace GS.FanstayWorld2D
 
     }
 
+    public class SelectedStoreData
+    {
+        public ItemData Outfit;
+        public ItemData Sword;
+        public ItemData Bow;
+        public ItemData Wand;
+        public ItemData MermaidOutfit;
+    }
+
     public class GameData : MonoBehaviour
     {
         public static GameData Instance { get; private set; }
+
+        public static Action<SelectedStoreData> OnLoadData, OnSaveData;
         public SaveState State { get => state; set => state = value; }
 
-        public StoreData storeData;
+        [SerializeField] private StoreData storeData;
 
         public int CurrentlySelectedBallIndex = 0;
         public int CurrentlySelectedFieldIndex = 0;
@@ -45,6 +57,7 @@ namespace GS.FanstayWorld2D
         public int CurrentlySelectedBowIndex = 0;
         public int CurrentlySelectedWandIndex = 0;
         public int CurrentlySelectedMermaidOutfitIndex = 0;
+        private SelectedStoreData selectedStoreData = new SelectedStoreData();
 
         [Header("Logic")]
 
@@ -88,6 +101,9 @@ namespace GS.FanstayWorld2D
             var file = new FileStream(saveFileName, FileMode.OpenOrCreate, FileAccess.Write);
             formatter.Serialize(file, State);
             file.Close();
+
+            UpdateStoreData();
+            OnSaveData?.Invoke(selectedStoreData);
         }
 
         public void Load()
@@ -102,6 +118,7 @@ namespace GS.FanstayWorld2D
                 State = (SaveState)formatter.Deserialize(file);
                 file.Close();
                 SelectedItemFinder();
+                OnLoadData?.Invoke(selectedStoreData);
             }
             catch
             {
@@ -119,6 +136,8 @@ namespace GS.FanstayWorld2D
             CurrentlySelectedBowIndex = GetSelectedItemIndex(State.Bow);
             CurrentlySelectedWandIndex = GetSelectedItemIndex(State.Wand);
             CurrentlySelectedMermaidOutfitIndex = GetSelectedItemIndex(State.Mermaid);
+
+            UpdateStoreData();
         }
 
         private int GetSelectedItemIndex(int[] itemList)
@@ -130,6 +149,15 @@ namespace GS.FanstayWorld2D
             }
 
             return 0;
+        }
+
+        private void UpdateStoreData()
+        {
+            selectedStoreData.Outfit = storeData.Outfits[CurrentlySelectedOutfitIndex];
+            selectedStoreData.Sword = storeData.Swords[CurrentlySelectedSwordIndex];
+            selectedStoreData.Bow = storeData.Bows[CurrentlySelectedBowIndex];
+            selectedStoreData.Wand = storeData.Wands[CurrentlySelectedWandIndex];
+            selectedStoreData.Outfit = storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
         }
 
     }
