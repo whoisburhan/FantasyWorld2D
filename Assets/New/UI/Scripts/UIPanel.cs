@@ -1,11 +1,18 @@
+using System.Security.Claims;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace GS.FanstayWorld2D.UI
 {
+    public interface IPanel
+    {
+        public void ShowPanel();
+        public void HidePanel();
+    }
+
     [RequireComponent(typeof(CanvasGroup))]
-    public class UIPanel : MonoBehaviour
+    public class UIPanel : MonoBehaviour, IPanel
     {
         private CanvasGroup canvasGroup;
 

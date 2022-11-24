@@ -12,14 +12,15 @@ namespace GS.FanstayWorld2D.UI
         private ItemData itemData;
         [SerializeField] private Image itemImg;
 
-        private UIPanel uIPanel;
+        private IPanel uIPanel;
 
         protected override void Awake()
         {
             base.Awake();
-            uIPanel = GetComponent<UIPanel>();
-            if (uIPanel == null)
-                uIPanel = this.gameObject.AddComponent<UIPanel>();
+            uIPanel = GetComponent<IPanel>();
+            itemImg = transform.GetChild(0).GetComponent<Image>();
+           // if (uIPanel == null)
+           //     uIPanel = this.gameObject.AddComponent<IPanel>();
         }
 
         private void Update()

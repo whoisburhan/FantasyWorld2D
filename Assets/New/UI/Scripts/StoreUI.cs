@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GS.FanstayWorld2D.Player;
 
 namespace GS.FanstayWorld2D.UI
 {
@@ -35,9 +36,14 @@ namespace GS.FanstayWorld2D.UI
         #endregion
 
         #region Unity Func
+
+        private void Awake()
+        {
+            itemSlots = GetComponentsInChildren<ShopItemSlot>(true);
+        }
         private void Start()
         {
-           itemSlots = GetComponentsInChildren<ShopItemSlot>(true);
+
         }
 
         private void OnEnable()
@@ -48,6 +54,26 @@ namespace GS.FanstayWorld2D.UI
         private void OnDisable()
         {
             OnUpdateDetailsPanel -= UpdateDetailsPanel;
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                UpdateShopSlots(GameData.Instance.storeData.Outfits);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                UpdateShopSlots(GameData.Instance.storeData.Swords);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                UpdateShopSlots(GameData.Instance.storeData.Bows);
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                UpdateShopSlots(GameData.Instance.storeData.Wands);
+            }
         }
         #endregion
 

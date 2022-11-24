@@ -1,33 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GS.AudioAsset;
 
 public class RandomAnimationPick : StateMachineBehaviour
 {
-    [SerializeField] private int animationCount;
-    [SerializeField] private bool longDelayToVariation = false;
-    [SerializeField] private int turnToWaitForRandomnese = 3;
+    [SerializeField] protected int animationCount;
+    [SerializeField] protected bool longDelayToVariation = false;
+    [SerializeField] protected int turnToWaitForRandomnese = 3;
 
-    private int counter = 0 , animationNo = 0;
+    private int counter = 0;
+    protected int animationNo = 0;
+
+    protected AudioSourceScript audioSourceScript;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (audioSourceScript == null) audioSourceScript = animator.transform.parent.GetComponent<AudioSourceScript>();
+
+        Debug.Log(audioSourceScript.name);
+
         if (!longDelayToVariation)
         {
-            animator.SetInteger("RandomPick", Random.Range(0, animationCount));
+            animationNo = Random.Range(0, animationCount);
+            animator.SetInteger("RandomPick", animationNo);
         }
         else
         {
             counter++;
-            if(counter >= turnToWaitForRandomnese)
+            if (counter >= turnToWaitForRandomnese)
             {
                 animationNo = Random.Range(0, animationCount);
                 counter = 0;
             }
-            
+
             animator.SetInteger("RandomPick", animationNo);
         }
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

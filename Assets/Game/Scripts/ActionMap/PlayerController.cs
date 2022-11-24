@@ -1,8 +1,10 @@
+using GS.AudioAsset;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace GS.FanstayWorld2D.Player
 {
+    [RequireComponent(typeof(AudioSourceScript))]
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController Instance { get; private set; }
