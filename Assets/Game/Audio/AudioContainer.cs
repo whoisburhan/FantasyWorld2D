@@ -16,7 +16,9 @@ namespace GS.AudioAsset
         SWORD_SLASH,
         SWORD_SLASH_3,
         JUMP,
-        JUMP_2
+        JUMP_2,
+        LANDED,
+        LANDED_2
     }
 
     [Serializable]
