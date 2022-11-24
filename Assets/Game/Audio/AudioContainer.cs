@@ -19,7 +19,14 @@ namespace GS.AudioAsset
         JUMP_2,
         LANDED,
         LANDED_2,
-        JUMP_INTO_WATER
+        JUMP_INTO_WATER,
+        OUCH,
+        OUCH_2,
+        OUCH_3,
+        OUCH_4,
+        OUCH_5,
+        OUCH_6
+        
     }
 
     [Serializable]
