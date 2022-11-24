@@ -25,3 +25,5 @@ MonoBehaviour:
     audioAsset: {fileID: 11400000, guid: 30bb3c642ab20174ba44afb76dd79dca, type: 2}
   - audioName: 5
     audioAsset: {fileID: 11400000, guid: 96329aa065adbea4da0366abf32073b8, type: 2}
+  - audioName: 6
+    audioAsset: {fileID: 11400000, guid: 3c06d600d3b1d074ea83641d0afef299, type: 2}
