@@ -224,7 +224,7 @@ namespace GS.FanstayWorld2D.Enemy
             {
                 foreach (var obj in attackZoneDetectedObj)
                 {
-                    // obj.SendMessage("Damage", enemyDamagePower);
+                    obj.SendMessage("Damage", enemyDamagePower);
                 }
             }
         }

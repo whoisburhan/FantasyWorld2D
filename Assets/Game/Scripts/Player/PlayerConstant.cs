@@ -121,6 +121,7 @@ namespace GS.FanstayWorld2D.Player
         [Header("Particles")]
         public ParticleSystem JumpParticles, LaunchParticles;
         public ParticleSystem MoveParticles, LandParticles;
+        public ParticleSystem BloodParticles;
 
 
         private void Awake()

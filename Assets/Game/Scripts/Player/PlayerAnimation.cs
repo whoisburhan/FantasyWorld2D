@@ -10,7 +10,7 @@ namespace GS.FanstayWorld2D.Player
         [SerializeField] private Animator animator;
         [SerializeField] private Animator memaidAnimator;
 
-        int run, sprint, jump, grounded, canClimb, climbUp, climbDown, weaponType, attack, swime, hit;
+        int run, sprint, jump, grounded, canClimb, climbUp, climbDown, weaponType, attack, swime, hit, die;
         private void Awake()
         {
             if (Instance == null)
@@ -36,6 +36,7 @@ namespace GS.FanstayWorld2D.Player
             attack = Animator.StringToHash("_Attack");
             swime = Animator.StringToHash("_Swime");
             hit = Animator.StringToHash("_Hit");
+            die = Animator.StringToHash("_Die");
         }
 
         public void ForcefullyIdle()
@@ -116,13 +117,14 @@ namespace GS.FanstayWorld2D.Player
 
         #region Hit and Die
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.C)) Hit();
-        }
         public void Hit()
         {
             animator.SetTrigger(hit);
+        }
+
+        public void Die(bool status = true)
+        {
+            animator.SetBool(die, status);
         }
 
         #endregion
