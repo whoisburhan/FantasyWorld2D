@@ -10392,64 +10392,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21b95a25b0340f46b3aa7e19597728a, type: 3}
---- !u!1 &549382962
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 549382963}
-  - component: {fileID: 549382964}
-  m_Layer: 4
-  m_Name: MermaidModeCol
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &549382963
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549382962}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.39, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1303811064}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &549382964
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549382962}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.36388397, y: 1.7249851}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 21.747543, y: 4.4499702}
-  m_EdgeRadius: 0
 --- !u!1 &550711482
 GameObject:
   m_ObjectHideFlags: 3
@@ -21992,16 +21934,6 @@ Transform:
   m_Father: {fileID: 787250565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!253 &1303811062 stripped
-BuoyancyEffector2D:
-  m_CorrespondingSourceObject: {fileID: 2080522413017731410, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-  m_PrefabInstance: {fileID: 2080522414042340340}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1303811064 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2080522413017731420, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-  m_PrefabInstance: {fileID: 2080522414042340340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1335092882
 GameObject:
   m_ObjectHideFlags: 3
@@ -34959,18 +34891,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: water
       objectReference: {fileID: 0}
-    - target: {fileID: 2080522413017731410, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-      propertyPath: m_Density
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080522413017731410, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-      propertyPath: m_LinearDrag
-      value: 13.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2080522413017731410, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-      propertyPath: m_SurfaceLevel
-      value: 1.7
-      objectReference: {fileID: 0}
     - target: {fileID: 2080522413017731420, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -35015,14 +34935,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2080522413017731422, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-      propertyPath: buoyancyEffector2D
-      value: 
-      objectReference: {fileID: 1303811062}
-    - target: {fileID: 2080522413017731422, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
-      propertyPath: mermaidModeCollider
-      value: 
-      objectReference: {fileID: 549382962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c1212eca5acfe24cbaa02b72c4b6932, type: 3}
 --- !u!1001 &2598116021907724743

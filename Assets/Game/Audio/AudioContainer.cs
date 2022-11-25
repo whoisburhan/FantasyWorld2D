@@ -25,7 +25,9 @@ namespace GS.AudioAsset
         OUCH_3,
         OUCH_4,
         OUCH_5,
-        OUCH_6
+        OUCH_6,
+        DIE,
+        WATER
         
     }
 
