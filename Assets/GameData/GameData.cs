@@ -10,12 +10,12 @@ namespace GS.FanstayWorld2D
     [System.Serializable]
     public class SaveState
     {
-        public int[] Outfits = new int[5] { 2, 0, 0, 0, 0 };
+        public int[] Outfits = new int[4] { 0, 0, 2, 0 };
 
-        public int[] Swords = new int[1] { 2 };
-        public int[] Bow = new int[1] { 2 };
-        public int[] Wand = new int[1] { 2 };
-        public int[] Mermaid = new int[1] { 2 };
+        public int[] Swords = new int[5] { 0, 0, 2, 0, 0 };
+        public int[] Bow = new int[3] { 0, 2, 0 };
+        public int[] Wand = new int[5] { 0, 2, 0, 0, 0 };
+        public int[] Mermaid = new int[2] { 0, 0 };
 
         //----------------------------------------------------------------------------
         public int[] Balls = new int[10] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -83,11 +83,17 @@ namespace GS.FanstayWorld2D
 
         private void Start()
         {
-            // state = new SaveState();
-            // saveFileName = Application.persistentDataPath + "/" + SaveFileName;
-            // Debug.Log(saveFileName);
-            // formatter = new BinaryFormatter();
-            // Load();
+            state = new SaveState();
+            saveFileName = Application.persistentDataPath + "/" + SaveFileName;
+            Debug.Log(saveFileName);
+            formatter = new BinaryFormatter();
+            Load();
+
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I)) OnLoadData?.Invoke(selectedStoreData);
         }
 
         public void Save()
@@ -103,7 +109,7 @@ namespace GS.FanstayWorld2D
             file.Close();
 
             UpdateStoreData();
-            OnSaveData?.Invoke(selectedStoreData);
+            //OnSaveData?.Invoke(selectedStoreData);
         }
 
         public void Load()
@@ -118,7 +124,7 @@ namespace GS.FanstayWorld2D
                 State = (SaveState)formatter.Deserialize(file);
                 file.Close();
                 SelectedItemFinder();
-                OnLoadData?.Invoke(selectedStoreData);
+
             }
             catch
             {
@@ -148,16 +154,18 @@ namespace GS.FanstayWorld2D
                     return i;
             }
 
-            return 0;
+            return -1; // Not selected anythings ; Used for locked Assets;
         }
 
         private void UpdateStoreData()
         {
-            selectedStoreData.Outfit = storeData.Outfits[CurrentlySelectedOutfitIndex];
-            selectedStoreData.Sword = storeData.Swords[CurrentlySelectedSwordIndex];
-            selectedStoreData.Bow = storeData.Bows[CurrentlySelectedBowIndex];
-            selectedStoreData.Wand = storeData.Wands[CurrentlySelectedWandIndex];
-            selectedStoreData.Outfit = storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
+            selectedStoreData.Outfit = CurrentlySelectedOutfitIndex == -1 ? null : storeData.Outfits[CurrentlySelectedOutfitIndex];
+            selectedStoreData.Sword = CurrentlySelectedSwordIndex == -1 ? null : storeData.Swords[CurrentlySelectedSwordIndex];
+            selectedStoreData.Bow = CurrentlySelectedBowIndex == -1 ? null : storeData.Bows[CurrentlySelectedBowIndex];
+            selectedStoreData.Wand = CurrentlySelectedWandIndex == -1 ? null : storeData.Wands[CurrentlySelectedWandIndex];
+           // selectedStoreData.MermaidOutfit = CurrentlySelectedMermaidOutfitIndex == -1 ? null : storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
+
+            OnLoadData?.Invoke(selectedStoreData);
         }
 
     }

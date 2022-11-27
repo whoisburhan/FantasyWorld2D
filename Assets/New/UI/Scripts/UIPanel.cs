@@ -19,7 +19,23 @@ namespace GS.FanstayWorld2D.UI
         private void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
+            OnAwakeCall();
         }
+
+        private void Start() => OnStartCall();
+        private void Update() => OnUpdateCall();
+        private void OnEnable() => OnEnableCall();
+        private void OnDisable() => OnDisableCall();
+
+        #region 
+        protected virtual void OnAwakeCall(){}
+
+        protected virtual void OnStartCall(){}
+        protected virtual void OnUpdateCall(){}
+        protected virtual void OnEnableCall(){}
+        protected virtual void OnDisableCall(){}
+
+        #endregion
 
         #region Hide & Show Panel
         public void ShowPanel()

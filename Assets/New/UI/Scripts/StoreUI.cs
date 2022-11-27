@@ -35,29 +35,34 @@ namespace GS.FanstayWorld2D.UI
 
         #endregion
 
-        #region Unity Func
+        #region Override Unity Func
 
-        private void Awake()
+        protected override void OnAwakeCall()
         {
+            base.OnAwakeCall();
             itemSlots = GetComponentsInChildren<ShopItemSlot>(true);
         }
-        private void Start()
+        protected override void OnStartCall()
         {
-
+            base.OnStartCall();
         }
 
-        private void OnEnable()
+        protected override void OnEnableCall()
         {
+            base.OnEnableCall();
             OnUpdateDetailsPanel += UpdateDetailsPanel;
         }
 
-        private void OnDisable()
+        protected override void OnDisableCall()
         {
+            base.OnDisableCall();
             OnUpdateDetailsPanel -= UpdateDetailsPanel;
         }
 
-        private void Update()
+        protected override void OnUpdateCall()
         {
+            base.OnUpdateCall();
+
             if(Input.GetKeyDown(KeyCode.Alpha1))
             {
                 UpdateShopSlots(GameData.Instance.storeData.Outfits);

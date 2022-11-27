@@ -27,8 +27,8 @@ namespace GS.AudioAsset
         OUCH_5,
         OUCH_6,
         DIE,
-        WATER
-        
+        WATER,
+        CAVE
     }
 
     [Serializable]

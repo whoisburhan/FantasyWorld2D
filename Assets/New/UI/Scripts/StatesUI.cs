@@ -34,13 +34,38 @@ namespace GS.FanstayWorld2D.UI
         [SerializeField] private Image mermaidAttackSpellImg;
         #endregion
 
-        private void Start()
+        #region Override Unity Func
+        protected override void OnStartCall()
         {
+            base.OnStartCall();
+
             UpdateHealthUI(20, 200);
             UpdateCurrentSessionTimeInUI(512);
         }
 
-       
+        protected override void OnEnableCall()
+        {
+            base.OnEnableCall();
+            GameData.OnLoadData += UpdateStateData;
+        }
+
+        protected override void OnDisableCall()
+        {
+            base.OnDisableCall();
+            GameData.OnLoadData -= UpdateStateData;
+        }
+
+        #endregion
+
+        private void UpdateStateData(SelectedStoreData data)
+        {
+            UpdateHumanCharacterOutfitInUI(data.Outfit != null ? data.Outfit.generalInfo.displayImg : null);
+
+            // Update Active Weapon States
+            UpdateActiveSwordWeaponUI(data.Sword != null ? data.Sword.generalInfo.displayImg : null);
+            UpdateActiveBowWeaponUI(data.Bow != null ? data.Bow.generalInfo.displayImg : null);
+            UpdateActiveWandWeaponUI(data.Wand != null ? data.Wand.generalInfo.displayImg : null);
+        }
 
         #region Updates States
         private void UpdateHealthUI(int currentHealth, int maxHealth)
@@ -75,47 +100,47 @@ namespace GS.FanstayWorld2D.UI
         private string SecondsToString(int timeInseconds)
         {
             string seconds = timeInseconds % 60 < 10 ? "0" + $"{timeInseconds % 60}" : $"{timeInseconds % 60}";
-            string minutes = (timeInseconds /60) % 60 < 10 ? "0" + $"{(timeInseconds /60) % 60}" : $"{(timeInseconds /60) % 60}";
-            string hours = timeInseconds / 3600  < 10 ? "0" + $"{timeInseconds / 3600}":$"{timeInseconds / 3600}";
+            string minutes = (timeInseconds / 60) % 60 < 10 ? "0" + $"{(timeInseconds / 60) % 60}" : $"{(timeInseconds / 60) % 60}";
+            string hours = timeInseconds / 3600 < 10 ? "0" + $"{timeInseconds / 3600}" : $"{timeInseconds / 3600}";
 
             return $"{hours}:{minutes}:{seconds}";
         }
         #endregion
-    
+
         #region  Update Active Character Outfits
 
         private void UpdateHumanCharacterOutfitInUI(Sprite outfit)
         {
-            humanCharacterImg.sprite = outfit;
+            if (outfit != null) humanCharacterImg.sprite = outfit;
         }
 
         private void UpdateMermaidCharacterOutfitInUI(Sprite outfit)
         {
-            mermaidCharacterImg.sprite = outfit;
+            if (outfit != null) mermaidCharacterImg.sprite = outfit;
         }
 
         #endregion
-    
+
         #region Update Active Weapon & Skills
 
         private void UpdateActiveMeleeWeaponUI(Sprite weapon)
         {
-            meleeWeaponImg.sprite = weapon;
+            if (weapon != null) meleeWeaponImg.sprite = weapon;
         }
 
         private void UpdateActiveSwordWeaponUI(Sprite weapon)
         {
-            swordWeaponImg.sprite = weapon;
+            if (weapon != null) swordWeaponImg.sprite = weapon;
         }
 
         private void UpdateActiveBowWeaponUI(Sprite weapon)
         {
-            bowWeaponImg.sprite = weapon;
+            if (weapon != null) bowWeaponImg.sprite = weapon;
         }
 
         private void UpdateActiveWandWeaponUI(Sprite weapon)
         {
-            wandWeaponImg.sprite = weapon;
+            if (weapon != null) wandWeaponImg.sprite = weapon;
         }
 
         private void UpdateMermaidAttackSpellInUI(Sprite weapon, Sprite mermaid)
@@ -123,7 +148,7 @@ namespace GS.FanstayWorld2D.UI
             mermaidImg.sprite = mermaid;
             mermaidAttackSpellImg.sprite = weapon;
         }
-        
+
 
         #endregion
     }

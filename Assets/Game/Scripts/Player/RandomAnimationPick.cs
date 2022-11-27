@@ -19,8 +19,6 @@ public class RandomAnimationPick : StateMachineBehaviour
     {
         if (audioSourceScript == null) audioSourceScript = animator.transform.parent.GetComponent<AudioSourceScript>();
 
-        Debug.Log(audioSourceScript.name);
-
         if (!longDelayToVariation)
         {
             animationNo = Random.Range(0, animationCount);

@@ -7,7 +7,6 @@ using System;
 
 namespace GS.Dialogue
 {
-    [RequireComponent(typeof(DialogueController))]
     public class DialogueScript : MonoBehaviour
     {
         #region Primary
@@ -49,7 +48,6 @@ namespace GS.Dialogue
 
         public Action OnNextButtonPressed;
         public Action OnSkipButtonPressed;
-
         private void Start()
         {
             InitButtonFunc();
