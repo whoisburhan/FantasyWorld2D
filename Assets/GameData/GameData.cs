@@ -96,6 +96,7 @@ namespace GS.FanstayWorld2D
             if (Input.GetKeyDown(KeyCode.I)) OnLoadData?.Invoke(selectedStoreData);
         }
 
+        #region  File READ/WRITE
         public void Save()
         {
             //If there no previous state loaded, create a new one
@@ -135,6 +136,47 @@ namespace GS.FanstayWorld2D
             }
         }
 
+        #endregion
+
+        #region  UPDATE SAVE STATE
+
+      
+        // Used By Store to save / select
+        public void UpdateSaveState(ItemData itemData, int slotNo)
+        {
+            switch (itemData.generalInfo.itemType)
+            {
+                case ItemType.Outfit:
+                    state.Outfits[CurrentlySelectedOutfitIndex] = 1; // UnEquiping ------ 1
+                    CurrentlySelectedOutfitIndex = slotNo;
+                    state.Outfits[slotNo] = 2; // Equipe new ----- 2
+                    break;
+                case ItemType.Sword:
+                    state.Swords[CurrentlySelectedSwordIndex] = 1;
+                    CurrentlySelectedSwordIndex = slotNo;
+                    state.Swords[slotNo] = 2;
+                    break;
+                case ItemType.Bow:
+                    state.Bow[CurrentlySelectedBowIndex] = 1;
+                    CurrentlySelectedBowIndex = slotNo;
+                    state.Bow[slotNo] = 2;
+                    break;
+                case ItemType.Wand:
+                    state.Wand[CurrentlySelectedWandIndex] = 1;
+                    CurrentlySelectedWandIndex = slotNo;
+                    state.Wand[slotNo] = 2;
+                    break;
+                case ItemType.Mermaid:
+                    state.Mermaid[CurrentlySelectedMermaidOutfitIndex] = 1;
+                    CurrentlySelectedMermaidOutfitIndex = slotNo;
+                    state.Mermaid[slotNo] = 2;
+                    break;
+            }
+
+            Save(); // Save data into the file, A costly function
+        }
+
+        #endregion
         private void SelectedItemFinder()
         {
             CurrentlySelectedOutfitIndex = GetSelectedItemIndex(State.Outfits);
@@ -163,7 +205,7 @@ namespace GS.FanstayWorld2D
             selectedStoreData.Sword = CurrentlySelectedSwordIndex == -1 ? null : storeData.Swords[CurrentlySelectedSwordIndex];
             selectedStoreData.Bow = CurrentlySelectedBowIndex == -1 ? null : storeData.Bows[CurrentlySelectedBowIndex];
             selectedStoreData.Wand = CurrentlySelectedWandIndex == -1 ? null : storeData.Wands[CurrentlySelectedWandIndex];
-           // selectedStoreData.MermaidOutfit = CurrentlySelectedMermaidOutfitIndex == -1 ? null : storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
+            // selectedStoreData.MermaidOutfit = CurrentlySelectedMermaidOutfitIndex == -1 ? null : storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
 
             OnLoadData?.Invoke(selectedStoreData);
         }

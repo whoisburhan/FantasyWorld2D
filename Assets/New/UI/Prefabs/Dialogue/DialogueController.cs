@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GS.FanstayWorld2D;
 using UnityEngine;
 
 namespace GS.Dialogue
@@ -11,6 +12,7 @@ namespace GS.Dialogue
         DialogueScript view;
 
         private DialogueData currentData;
+        private Sprite playerImg;
 
         #region Unity Func
         private void Awake()
@@ -31,14 +33,23 @@ namespace GS.Dialogue
 
             view.OnNextButtonPressed += UpdateAction;
             view.OnSkipButtonPressed += SkipConversation;
+
+            GameData.OnLoadData += OnDataUpdate;
         }
 
         private void OnDiable()
         {
             view.OnNextButtonPressed -= UpdateAction;
             view.OnSkipButtonPressed -= SkipConversation;
+
+            GameData.OnLoadData -= OnDataUpdate;
         }
         #endregion
+
+        private void OnDataUpdate(SelectedStoreData data)
+        {
+            playerImg = data.Outfit.generalInfo.protraitImg;
+        }
 
         //flags
         private int currentDataSegments, currentSegmentSentences, segmentCounter, sentenceCounter;
@@ -54,8 +65,11 @@ namespace GS.Dialogue
             SpeakerInfo speakerOne = data.segments[0].speakerInfo;
             SpeakerInfo speakerTwo = data.segments[1].speakerInfo;
 
-            view.UpdateSpeakerInfo(speakerOne.speakerImg, speakerOne.speakerName, speakerOne.speakerType, data.segments[0].dialogueBoxSide);
-            view.UpdateSpeakerInfo(speakerTwo.speakerImg, speakerTwo.speakerName, speakerTwo.speakerType, data.segments[1].dialogueBoxSide);
+            var speakerImgOne = speakerOne.speakerType == SpeakerType.Player && playerImg != null ? playerImg : speakerOne.speakerImg;
+            var speakerImgTwo = speakerTwo.speakerType == SpeakerType.Player && playerImg != null ? playerImg : speakerTwo.speakerImg;
+
+            view.UpdateSpeakerInfo(speakerImgOne, speakerOne.speakerName, speakerOne.speakerType, data.segments[0].dialogueBoxSide);
+            view.UpdateSpeakerInfo(speakerImgTwo, speakerTwo.speakerName, speakerTwo.speakerType, data.segments[1].dialogueBoxSide);
 
             view.DisplaySpeech("", DialogueBoxSide.DialogueBox_Left);
             view.DisplaySpeech("", DialogueBoxSide.DialogueBox_Right);
@@ -92,6 +106,7 @@ namespace GS.Dialogue
                         currentSegmentSentences = currentData.segments[segmentCounter].sentences.Count;
 
                         SpeakerInfo speakerOne = currentData.segments[segmentCounter].speakerInfo;
+                        var speakerImgOne = speakerOne.speakerType == SpeakerType.Player && playerImg != null ? playerImg : speakerOne.speakerImg;
 
                         view.UpdateSpeakerInfo(speakerOne.speakerImg, speakerOne.speakerName, speakerOne.speakerType, currentData.segments[segmentCounter].dialogueBoxSide);
                     }

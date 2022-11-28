@@ -10,6 +10,7 @@ namespace GS.FanstayWorld2D.UI
     {
         [Header("Item Data")]
         private ItemData itemData;
+        private int shopItemSlotIndex;
         [SerializeField] private Image itemImg;
 
         private IPanel uIPanel;
@@ -19,8 +20,8 @@ namespace GS.FanstayWorld2D.UI
             base.Awake();
             uIPanel = GetComponent<IPanel>();
             itemImg = transform.GetChild(0).GetComponent<Image>();
-           // if (uIPanel == null)
-           //     uIPanel = this.gameObject.AddComponent<IPanel>();
+            // if (uIPanel == null)
+            //     uIPanel = this.gameObject.AddComponent<IPanel>();
         }
 
         private void Update()
@@ -31,12 +32,14 @@ namespace GS.FanstayWorld2D.UI
                 uIPanel.ShowPanel();
         }
 
-        public void Init(ItemData itemData)
+        public void Init(ItemData itemData, int index, int itemsState)
         {
+            shopItemSlotIndex = index;
             if (itemData != null)
             {
                 this.itemData = itemData;
                 itemImg.sprite = itemData.generalInfo.displayImg;
+                itemData.shopData.itemStatus = (ItemStatus)itemsState;
                 uIPanel.ShowPanel();
             }
             else
@@ -58,7 +61,7 @@ namespace GS.FanstayWorld2D.UI
 
             if (itemData != null)
             {
-                StoreUI.OnUpdateDetailsPanel?.Invoke(itemData);
+                StoreUI.OnUpdateDetailsPanel?.Invoke(itemData, shopItemSlotIndex);
             }
         }
 

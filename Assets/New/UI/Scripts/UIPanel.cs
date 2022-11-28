@@ -1,3 +1,4 @@
+using System;
 using System.Security.Claims;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,12 +29,14 @@ namespace GS.FanstayWorld2D.UI
         private void OnDisable() => OnDisableCall();
 
         #region 
-        protected virtual void OnAwakeCall(){}
+        protected virtual void OnAwakeCall() { }
 
-        protected virtual void OnStartCall(){}
-        protected virtual void OnUpdateCall(){}
-        protected virtual void OnEnableCall(){}
-        protected virtual void OnDisableCall(){}
+        protected virtual void OnStartCall() { }
+        protected virtual void OnUpdateCall() { }
+        protected virtual void OnEnableCall() { }
+        protected virtual void OnDisableCall() { }
+        protected virtual void OnShowPanel() { }
+        protected virtual void OnHidePanel() { }
 
         #endregion
 
@@ -43,6 +46,7 @@ namespace GS.FanstayWorld2D.UI
             canvasGroup.alpha = 1;
             canvasGroup.blocksRaycasts = true;
             canvasGroup.interactable = true;
+            OnShowPanel();
         }
 
         public void HidePanel()
@@ -50,6 +54,7 @@ namespace GS.FanstayWorld2D.UI
             canvasGroup.alpha = 0;
             canvasGroup.blocksRaycasts = false;
             canvasGroup.interactable = false;
+            OnHidePanel();
         }
 
         #endregion

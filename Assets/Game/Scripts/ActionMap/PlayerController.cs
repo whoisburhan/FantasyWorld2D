@@ -43,25 +43,28 @@ namespace GS.FanstayWorld2D.Player
 
         private void Update()
         {
-            if (CanInput)
+            if (Time.timeScale > 0f)
             {
-                switch (PlayerConstant.Instance.CurrentActionMap)
+                if (CanInput)
                 {
-                    case ActionMaps.Land:
-                        ActionMap_Land();
-                        break;
-                    case ActionMaps.Water:
-                        ActionMap_Water();
-                        break;
-                    case ActionMaps.UI:
-                        ActionMap_UI();
-                        break;
+                    switch (PlayerConstant.Instance.CurrentActionMap)
+                    {
+                        case ActionMaps.Land:
+                            ActionMap_Land();
+                            break;
+                        case ActionMaps.Water:
+                            ActionMap_Water();
+                            break;
+                        case ActionMaps.UI:
+                            ActionMap_UI();
+                            break;
+                    }
                 }
-            }
 
-            if(AutoRun)
-            {
-                MoveX =  1f;    // Can be used in cutscene
+                if (AutoRun)
+                {
+                    MoveX = 1f;    // Can be used in cutscene
+                }
             }
         }
 
@@ -73,7 +76,7 @@ namespace GS.FanstayWorld2D.Player
             SwitchWeapon = playerControls.Land.Switch_Weapon.WasPressedThisFrame();
 
 
-            MoveX =  playerControls.Land.Move_X.ReadValue<float>();
+            MoveX = playerControls.Land.Move_X.ReadValue<float>();
             Sprint = playerControls.Land.Sprint.inProgress;
             MoveY = playerControls.Land.Move_Y.ReadValue<float>();
 

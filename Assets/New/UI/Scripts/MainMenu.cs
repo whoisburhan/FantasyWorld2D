@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,12 +33,33 @@ namespace GS.FanstayWorld2D.UI
 
             InitBtns();     //Init All Main Menu Buttons
         }
+
+        protected override void OnUpdateCall()
+        {
+            base.OnUpdateCall();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ShowPanel();
+                Time.timeScale = 0f;
+            }
+        }
+
+        protected override void OnShowPanel()
+        {
+            base.OnShowPanel();
+            UpdateActivePanel(statesPanel, activePanel);
+        }
         #endregion
 
 
         private void InitBtns()
         {
             // Resume Btn
+            resumeBtn.onClick.AddListener(() =>
+            {
+                HidePanel();
+                Time.timeScale = 1f;
+            });
 
             statesBtn.onClick.AddListener(() => UpdateActivePanel(statesPanel, activePanel));
             profileBtn.onClick.AddListener(() => UpdateActivePanel(profilePanel, activePanel));

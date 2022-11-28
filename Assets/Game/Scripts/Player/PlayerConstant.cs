@@ -27,6 +27,8 @@ namespace GS.FanstayWorld2D.Player
         [SerializeField] private Rigidbody2D playerRigidbodyMain;
         [SerializeField] private CharacterViewer characterviewer;
 
+        private CharacterSetUp characterSetUp;
+
         [Header("CharacterController")]
         [SerializeField] private GameObject humanCharacter;
         [SerializeField] private GameObject mermaidCharacter;
@@ -102,6 +104,9 @@ namespace GS.FanstayWorld2D.Player
 
         public string[] WeaponList = new string[4] { "", "Sword 01", "Bow 01", "Wand 01" };
 
+        private SelectedStoreData selectedStoreData;
+
+        private int playerWeapon = 0;
         public int PlayerWeapon
         {
             get { return playerWeapon; }
@@ -111,12 +116,20 @@ namespace GS.FanstayWorld2D.Player
                 if (playerWeapon >= 4)
                     playerWeapon = 0;
                 PlayerAnimation.Instance.SwitchWeapon(playerWeapon);
-                characterviewer.EquipPart(playerWeapon == 2 ? SlotCategory.OffHand : SlotCategory.MainHand, WeaponList[playerWeapon]);
+                characterSetUp.UpdateWeapon(playerWeapon);
 
             }
         }
 
-        private int playerWeapon = 0;
+        private void UpdateWeapon(int playerWeapon)
+        {
+            
+            characterviewer.EquipPart(playerWeapon == 2 ? SlotCategory.OffHand : SlotCategory.MainHand, WeaponList[playerWeapon]);
+        }
+        private void GetActiveWeaponDetails(SelectedStoreData data)
+        {
+            selectedStoreData = data;
+        }
 
         [Header("Particles")]
         public ParticleSystem JumpParticles, LaunchParticles;
@@ -134,6 +147,8 @@ namespace GS.FanstayWorld2D.Player
             {
                 Destroy(this);
             }
+
+            characterSetUp = GetComponent<CharacterSetUp>();
         }
 
         public void SwitchCurrentActionMap(ActionMaps actionMap)

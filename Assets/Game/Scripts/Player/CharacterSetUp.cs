@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CharacterCreator2D;
 using GS.FanstayWorld2D.UI;
+using GS.FanstayWorld2D.Player;
 
 namespace GS.FanstayWorld2D
 {
@@ -11,6 +12,8 @@ namespace GS.FanstayWorld2D
         public CharacterViewer character;
 
         private const string OUTFIT_PATH = "Assets/";
+
+        private SelectedStoreData selectedStoreData;
 
         #region  Unity Func
         private void Start()
@@ -51,18 +54,49 @@ namespace GS.FanstayWorld2D
         #endregion
         private void OnStoreDataUpdate(SelectedStoreData data)
         {
+            selectedStoreData = data;
             Debug.Log($"III {data.Outfit.name}");
             UpdateOutfit(data.Outfit.characterViwerData.Path);
-            if(OnGamePlayUI.Instance != null) OnGamePlayUI.Instance.UpdateProfilePic(data.Outfit.generalInfo.protraitImg);
+            if (OnGamePlayUI.Instance != null) OnGamePlayUI.Instance.UpdateProfilePic(data.Outfit.generalInfo.protraitImg);
 
-            UpdatePlayerWeaponColor(data.Sword.generalInfo.itemType, data.Sword.characterViwerData);
-            UpdatePlayerWeaponColor(data.Bow.generalInfo.itemType, data.Bow.characterViwerData);
-            UpdatePlayerWeaponColor(data.Wand.generalInfo.itemType, data.Wand.characterViwerData);
-            //UpdatePlayerWeaponColor(data.MermaidOutfit.generalInfo.itemType, data.MermaidOutfit.characterViwerData);
+            UpdateWeapon(PlayerConstant.Instance.PlayerWeapon);
+            // UpdatePlayerWeaponColor(data.Sword.generalInfo.itemType, data.Sword.characterViwerData);
+            // UpdatePlayerWeaponColor(data.Bow.generalInfo.itemType, data.Bow.characterViwerData);
+            // UpdatePlayerWeaponColor(data.Wand.generalInfo.itemType, data.Wand.characterViwerData);
+
+            // Update Mermaid
         }
 
         #region Update Different parts
 
+        public void UpdateWeapon(int weapon)
+        {
+            PlayerAnimation.Instance.SwitchWeapon(weapon);
+            
+            CharacterViwerData temp;
+            switch (weapon)
+            {
+                case 0:
+                    UpdateEquipePart(SlotCategory.MainHand, ""); // for empty hand
+                    break;
+                case 1:
+                    temp = selectedStoreData.Sword.characterViwerData;
+                    UpdateEquipePart(SlotCategory.MainHand, temp.Path);
+                    UpdatePlayerWeaponColor(SlotCategory.MainHand, temp);
+                    break;
+                case 2:
+                    temp = selectedStoreData.Bow.characterViwerData;
+                    UpdateEquipePart(SlotCategory.OffHand, temp.Path);
+                    UpdatePlayerWeaponColor(SlotCategory.OffHand, temp);
+                    break;
+                case 3:
+                    temp = selectedStoreData.Wand.characterViwerData;
+                    UpdateEquipePart(SlotCategory.MainHand, temp.Path);
+                    UpdatePlayerWeaponColor(SlotCategory.MainHand, temp);
+                    break;
+
+            }
+        }
         private void UpdateOutfit(string fileName)
         {
             Debug.Log(OUTFIT_PATH + fileName);
@@ -75,10 +109,8 @@ namespace GS.FanstayWorld2D
         }
 
 
-        private void UpdatePlayerWeaponColor(ItemType itemType, CharacterViwerData characterViwerData)
+        private void UpdatePlayerWeaponColor(SlotCategory slotCategory, CharacterViwerData characterViwerData)
         {
-            SlotCategory slotCategory = GetSlotCategory(itemType);
-
             if (slotCategory == SlotCategory.MainHand || slotCategory == SlotCategory.OffHand)
             {
                 UpdateColor(slotCategory, characterViwerData);
