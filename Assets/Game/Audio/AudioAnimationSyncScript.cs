@@ -17,7 +17,13 @@ namespace GS.AudioAsset
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (audioSourceScript == null) audioSourceScript = animator.transform.parent.GetComponent<AudioSourceScript>();
+            if (audioSourceScript == null)
+            {
+                audioSourceScript = animator.transform.GetComponent<AudioSourceScript>();
+
+                if (audioSourceScript == null) audioSourceScript = animator.transform.parent.GetComponent<AudioSourceScript>();
+
+            }
 
             if (audioPlayTimeInAnimation == AudioPlayTimeInAnimation.OnStateEnter && audioName.Count > 0)
             {

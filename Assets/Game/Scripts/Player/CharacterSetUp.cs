@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace GS.FanstayWorld2D
     {
         public CharacterViewer character;
 
-        private const string OUTFIT_PATH = "Assets/";
+       // private const string OUTFIT_PATH = ;
 
         private SelectedStoreData selectedStoreData;
 
@@ -72,7 +73,7 @@ namespace GS.FanstayWorld2D
         public void UpdateWeapon(int weapon)
         {
             PlayerAnimation.Instance.SwitchWeapon(weapon);
-            
+
             CharacterViwerData temp;
             switch (weapon)
             {
@@ -99,8 +100,8 @@ namespace GS.FanstayWorld2D
         }
         private void UpdateOutfit(string fileName)
         {
-            Debug.Log(OUTFIT_PATH + fileName);
-            character.LoadFromJSON($"{OUTFIT_PATH + fileName}.json");
+            Debug.Log($"{Application.streamingAssetsPath}/{fileName}.json");
+            character.LoadFromJSON($"{Application.streamingAssetsPath}/{fileName}.json");
         }
 
         private void UpdateEquipePart(SlotCategory slotCategory, string partName)

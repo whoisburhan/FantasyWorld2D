@@ -77,7 +77,8 @@ namespace GS.FanstayWorld2D.Player
 
 
             MoveX = playerControls.Land.Move_X.ReadValue<float>();
-            Sprint = playerControls.Land.Sprint.inProgress;
+            //Sprint = playerControls.Land.Sprint.inProgress;
+            Sprint = playerControls.Land.Sprint.IsPressed();
             MoveY = playerControls.Land.Move_Y.ReadValue<float>();
 
 

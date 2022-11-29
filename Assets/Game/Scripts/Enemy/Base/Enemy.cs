@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GS.AudioAsset;
 using GS.FanstayWorld2D.Player;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace GS.FanstayWorld2D.Enemy
     {
         None, Idle, Patrol, Chase, Attack, Hurt, Die
     }
-    [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Animator), typeof(SpriteRenderer),typeof(AudioSourceScript))]
     public class Enemy : MonoBehaviour
     {
         protected EnemyState enemyState, previousEnemyState;

@@ -108,7 +108,7 @@ namespace GS.Dialogue
                         SpeakerInfo speakerOne = currentData.segments[segmentCounter].speakerInfo;
                         var speakerImgOne = speakerOne.speakerType == SpeakerType.Player && playerImg != null ? playerImg : speakerOne.speakerImg;
 
-                        view.UpdateSpeakerInfo(speakerOne.speakerImg, speakerOne.speakerName, speakerOne.speakerType, currentData.segments[segmentCounter].dialogueBoxSide);
+                        view.UpdateSpeakerInfo(speakerImgOne, speakerOne.speakerName, speakerOne.speakerType, currentData.segments[segmentCounter].dialogueBoxSide);
                     }
 
                     UpdateAction();

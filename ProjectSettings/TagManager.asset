@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: GRID_FORGROUND
+    uniqueID: 2740619855
+    locked: 0
   - name: Building
     uniqueID: 803453191
     locked: 0

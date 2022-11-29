@@ -38,7 +38,9 @@ namespace GS.FanstayWorld2D.Extras
             GUIStyle style = new GUIStyle();
             style.fontSize = 20;
 
+            #if UNITY_EDITOR
             UnityEditor.Handles.Label(transform.position + (Vector3)offset, gameObject.name, style);
+            #endif
         }
     }
 }

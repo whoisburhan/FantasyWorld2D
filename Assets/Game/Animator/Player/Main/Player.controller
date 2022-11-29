@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 0d000000
+  audioName: 3c000000
   audioPlayTimeInAnimation: 0
 --- !u!1102 &-7679074348520340931
 AnimatorState:
@@ -1084,7 +1084,7 @@ AnimatorStateMachine:
     m_Position: {x: 120, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8213138201383453563}
-    m_Position: {x: 360, y: 310, z: 0}
+    m_Position: {x: 370, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2357754188333215824}
     m_Position: {x: 650, y: -110, z: 0}
@@ -1479,7 +1479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 0200000003000000
+  audioName: 1400000015000000
   audioPlayTimeInAnimation: 0
 --- !u!1102 &-1216235988937343334
 AnimatorState:
@@ -1543,7 +1543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 0400000005000000
+  audioName: 1e0000001f000000
   audioPlayTimeInAnimation: 1
 --- !u!1101 &-620152350284819430
 AnimatorStateTransition:
@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 0700000008000000090000000a0000000b0000000c000000
+  audioName: 320000003300000034000000350000003600000037000000
   audioPlayTimeInAnimation: 0
 --- !u!1102 &1184909079001817528
 AnimatorState:
@@ -2205,7 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 06000000
+  audioName: 28000000
   audioPlayTimeInAnimation: 0
 --- !u!1101 &2528845793380828635
 AnimatorStateTransition:
@@ -2403,7 +2403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 01000000
+  audioName: 0b000000
   audioPlayTimeInAnimation: 0
 --- !u!114 &5388077593549433536
 MonoBehaviour:
@@ -2820,7 +2820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76eedb56512ab74ab046d9e6f90366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioName: 00000000
+  audioName: 0a000000
   audioPlayTimeInAnimation: 0
 --- !u!1101 &8390573677629731968
 AnimatorStateTransition:

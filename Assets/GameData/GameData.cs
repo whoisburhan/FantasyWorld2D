@@ -10,12 +10,12 @@ namespace GS.FanstayWorld2D
     [System.Serializable]
     public class SaveState
     {
-        public int[] Outfits = new int[4] { 0, 0, 2, 0 };
+        public int[] Outfits = new int[4] { 2, 0, 0, 0 };
 
-        public int[] Swords = new int[5] { 0, 0, 2, 0, 0 };
-        public int[] Bow = new int[3] { 0, 2, 0 };
-        public int[] Wand = new int[5] { 0, 2, 0, 0, 0 };
-        public int[] Mermaid = new int[2] { 0, 0 };
+        public int[] Swords = new int[5] { 2, 0, 0, 0, 0 };
+        public int[] Bow = new int[3] { 2, 0, 0 };
+        public int[] Wand = new int[5] { 2, 0, 0, 0, 0 };
+        public int[] Mermaid = new int[2] { 2, 0 };
 
         //----------------------------------------------------------------------------
         public int[] Balls = new int[10] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -57,6 +57,8 @@ namespace GS.FanstayWorld2D
         public int CurrentlySelectedBowIndex = 0;
         public int CurrentlySelectedWandIndex = 0;
         public int CurrentlySelectedMermaidOutfitIndex = 0;
+
+        private bool updateShopItemStatusPermissible = true;
         private SelectedStoreData selectedStoreData = new SelectedStoreData();
 
         [Header("Logic")]
@@ -185,9 +187,32 @@ namespace GS.FanstayWorld2D
             CurrentlySelectedWandIndex = GetSelectedItemIndex(State.Wand);
             CurrentlySelectedMermaidOutfitIndex = GetSelectedItemIndex(State.Mermaid);
 
+            // Update For Once In A Game Session
+            if(updateShopItemStatusPermissible)
+            {
+                UpdateShopItemStatus();
+                updateShopItemStatusPermissible = false;
+            }
+            //
+
             UpdateStoreData();
         }
 
+        private void UpdateShopItemStatus()
+        {
+            updateShopItemStatusFunc(storeData.Outfits,state.Outfits);
+            updateShopItemStatusFunc(storeData.Swords,state.Swords);
+            updateShopItemStatusFunc(storeData.Bows,state.Bow);
+            updateShopItemStatusFunc(storeData.Wands,state.Wand);
+            //updateShopItemStatusFunc(storeData.Mermaids,state.Mermaid);
+        }
+        private void updateShopItemStatusFunc(List<ItemData> itemDatas, int[] saveStatusArr)
+        {
+            for(int i = 0; i < itemDatas.Count; i++)
+            {
+                itemDatas[i].shopData.itemStatus = (ItemStatus) saveStatusArr[i];
+            }
+        }
         private int GetSelectedItemIndex(int[] itemList)
         {
             for (int i = 0; i < itemList.Length; i++)
