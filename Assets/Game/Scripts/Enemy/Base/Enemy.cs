@@ -232,7 +232,7 @@ namespace GS.FanstayWorld2D.Enemy
 
         protected virtual void HurtState()
         {
-
+            
         }
 
         protected virtual void DieState()

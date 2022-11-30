@@ -115,7 +115,6 @@ namespace GS.FanstayWorld2D.Player
                 playerWeapon = value;
                 if (playerWeapon >= 4)
                     playerWeapon = 0;
-                PlayerAnimation.Instance.SwitchWeapon(playerWeapon);
                 characterSetUp.UpdateWeapon(playerWeapon);
 
             }
@@ -149,6 +148,7 @@ namespace GS.FanstayWorld2D.Player
             }
 
             characterSetUp = GetComponent<CharacterSetUp>();
+
         }
 
         public void SwitchCurrentActionMap(ActionMaps actionMap)

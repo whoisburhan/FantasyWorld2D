@@ -8,7 +8,7 @@ using GS.FanstayWorld2D.UI;
 
 namespace GS.FanstayWorld2D.CoomonLevelStuff
 {
-    public class CutSceneCanvasScript : MonoBehaviour
+    public class CutSceneCanvasScript : UIPanel
     {
 
         public static CutSceneCanvasScript Instance { get; private set; }
@@ -28,7 +28,7 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
         [SerializeField] private Transform bottomPanelLevelOffset;
 
 
-        private void Awake()
+        protected override void OnAwakeCall()
         {
             if (Instance == null)
             {
@@ -43,6 +43,7 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
 
         public void StartCutscene(Action action = null)
         {
+            ShowPanel();
             if (OnGamePlayUI.Instance != null) OnGamePlayUI.Instance.HidePanel();
             topPanel.DOMove(topPanelCutsceneOffset.position, cutSceneAnimationBarDuration).OnComplete(() => { action?.Invoke(); });
             bottomPanel.DOMove(bottomPanelCutsceneOffset.position, cutSceneAnimationBarDuration);
@@ -53,6 +54,7 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
             topPanel.DOMove(topPanelDefaultOffset.position, cutSceneAnimationBarDuration).OnComplete(() =>
             {
                 action?.Invoke();
+                HidePanel();
                 if(OnGamePlayUI.Instance != null) OnGamePlayUI.Instance.ShowPanel();
             }); ;
             bottomPanel.DOMove(bottomPanelDefaultOffset.position, cutSceneAnimationBarDuration);
@@ -60,12 +62,14 @@ namespace GS.FanstayWorld2D.CoomonLevelStuff
 
         public void StartLevel(Action action = null)
         {
+            ShowPanel();
             topPanel.DOMove(topPanelLevelOffset.position, levelChangeAnimationBarDuration).OnComplete(() => { action?.Invoke(); }); ;
             bottomPanel.DOMove(bottomPanelLevelOffset.position, levelChangeAnimationBarDuration);
         }
 
         public void EndLevel(Action action = null)
         {
+            ShowPanel();
             topPanel.DOMove(topPanelLevelOffset.position, levelChangeAnimationBarDuration).OnComplete(() => { action?.Invoke(); }); ;
             bottomPanel.DOMove(bottomPanelLevelOffset.position, levelChangeAnimationBarDuration);
         }

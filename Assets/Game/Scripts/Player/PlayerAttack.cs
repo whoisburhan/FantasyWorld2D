@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GS.FanstayWorld2D.Projectile;
 
 namespace GS.FanstayWorld2D.Player
 {
@@ -17,6 +18,9 @@ namespace GS.FanstayWorld2D.Player
         [Space]
         [SerializeField] private Transform swordAttackHitBoxPos;
         [SerializeField] private float swordAttackRadius;
+        [Header("Projectile Spawn Point")]
+        [SerializeField] private Transform arrowSpawnPoint;
+        [SerializeField] private Transform projectileSpawnPoint;
 
         void Update()
         {
@@ -98,12 +102,18 @@ namespace GS.FanstayWorld2D.Player
 
         private void BowAttack()
         {
-
+            GameObject go = ProjectileController.Instance.ICE;
+            go.SetActive(false);
+            go.transform.SetPositionAndRotation(arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+            go.SetActive(true);
         }
 
         private void WandAttack()
         {
-
+            GameObject go = ProjectileController.Instance.ICE;
+            go.SetActive(false);
+            go.transform.SetPositionAndRotation(projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+            go.SetActive(true);
         }
 
         #region  Gizmos
