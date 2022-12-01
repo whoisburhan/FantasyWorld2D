@@ -19,6 +19,8 @@ namespace GS.FanstayWorld2D.Player
         private float finalSpeedOffset;
         bool isGrounded, landTouch = true;
 
+        private bool isDirectionRight = true;
+
         // Jump
         private float jumpPressedRemember, jumpPressedRememberTime = 0.2f, groundRemember, groundRememberTime = 0.15f;
         private void Update()
@@ -40,16 +42,16 @@ namespace GS.FanstayWorld2D.Player
                 if (Mathf.Abs(PlayerController.Instance.MoveX) >= 1f)
                 {
                     PlayerAnimation.Instance.Run();
-                    if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                    if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
                     {
                         PlayerConstant.Instance.MermaidColliderRun.SetActive(true);
-                        PlayerConstant.Instance.MermaidColliderIdle.SetActive(false);     
+                        PlayerConstant.Instance.MermaidColliderIdle.SetActive(false);
                     }
                 }
                 else
                 {
                     PlayerAnimation.Instance.StopRun();
-                    if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                    if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
                     {
                         PlayerConstant.Instance.MermaidColliderIdle.SetActive(true);
                         PlayerConstant.Instance.MermaidColliderRun.SetActive(false);
@@ -154,7 +156,7 @@ namespace GS.FanstayWorld2D.Player
             if (!PlayerConstant.Instance.CanClimb)
             {
                 rb2d.velocity = new Vector2(PlayerController.Instance.MoveX * finalSpeedOffset, rb2d.velocity.y);
-                if(PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
+                if (PlayerConstant.Instance.GamePlayerType == PlayerType.Mermaid)
                 {
                     rb2d.velocity = new Vector2(rb2d.velocity.x, PlayerController.Instance.MoveY * climbSpeedOffset);
                 }
@@ -171,7 +173,7 @@ namespace GS.FanstayWorld2D.Player
                 {
                     PlayerConstant.Instance.GamePlayerType = PlayerType.Mermaid;
                     rb2d.gravityScale = 0f;
-                   // rb2d.isKinematic = true;
+                    // rb2d.isKinematic = true;
                     rb2d.velocity = Vector2.zero;
 
                 }
@@ -179,7 +181,7 @@ namespace GS.FanstayWorld2D.Player
                 {
                     PlayerConstant.Instance.GamePlayerType = PlayerType.Human;
                     rb2d.gravityScale = 10f;
-                   // rb2d.isKinematic = false;
+                    // rb2d.isKinematic = false;
                     rb2d.velocity = Vector2.zero;
                 }
             }
@@ -187,10 +189,16 @@ namespace GS.FanstayWorld2D.Player
 
         private void PlayerDirection()
         {
-            if (PlayerController.Instance.MoveX > 0f && transform.localScale.x < 0f || PlayerController.Instance.MoveX < 0f && transform.localScale.x > 0f)
+            // if (PlayerController.Instance.MoveX > 0f && transform.localScale.x < 0f || PlayerController.Instance.MoveX < 0f && transform.localScale.x > 0f)
+            // {
+            //     Vector3 dir = transform.localScale;
+            //     transform.localScale = new Vector3(dir.x * -1f, dir.y, dir.z);
+            // }
+
+            if (PlayerController.Instance.MoveX > 0f && !isDirectionRight || PlayerController.Instance.MoveX < 0f && isDirectionRight)
             {
-                Vector3 dir = transform.localScale;
-                transform.localScale = new Vector3(dir.x * -1f, dir.y, dir.z);
+                isDirectionRight = !isDirectionRight;
+                transform.Rotate(0f,180f,0f);
             }
         }
 

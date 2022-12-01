@@ -1,3 +1,5 @@
+using System.Linq;
+using System.Net;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -102,7 +104,7 @@ namespace GS.FanstayWorld2D.Player
 
         private void BowAttack()
         {
-            GameObject go = ProjectileController.Instance.ICE;
+            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.LIGHTNING);
             go.SetActive(false);
             go.transform.SetPositionAndRotation(arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             go.SetActive(true);
@@ -110,7 +112,7 @@ namespace GS.FanstayWorld2D.Player
 
         private void WandAttack()
         {
-            GameObject go = ProjectileController.Instance.ICE;
+            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.ICE);
             go.SetActive(false);
             go.transform.SetPositionAndRotation(projectileSpawnPoint.position, projectileSpawnPoint.rotation);
             go.SetActive(true);

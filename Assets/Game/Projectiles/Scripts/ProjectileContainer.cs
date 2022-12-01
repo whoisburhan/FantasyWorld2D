@@ -13,7 +13,15 @@ namespace GS.FanstayWorld2D.Projectile
     [Serializable]
     public class ProjectileInfo
     {
+        private int counter = -1;
         public ProjectileType projectileType;
-        public GameObject projectileObj;
+        public List<GameObject> projectileObjs;
+
+        public GameObject GetProjectile()
+        {
+            counter++;
+            return projectileObjs[counter % projectileObjs.Count];
+        }
+
     }
 }
