@@ -17,6 +17,8 @@ MonoBehaviour:
     audioAsset: {fileID: 11400000, guid: a2ed4979f0b17314283075453953ccd0, type: 2}
   - audioName: 11
     audioAsset: {fileID: 11400000, guid: fe0912c006f648b43822c74b1b4bc9d0, type: 2}
+  - audioName: 12
+    audioAsset: {fileID: 11400000, guid: 7a49560067ff7a24190c881b9145cefb, type: 2}
   - audioName: 20
     audioAsset: {fileID: 11400000, guid: d3ea7ae965a34354e8cc618b5a3261ee, type: 2}
   - audioName: 21
@@ -55,3 +57,5 @@ MonoBehaviour:
     audioAsset: {fileID: 11400000, guid: 274c467eb31469941bd22f023ff054c5, type: 2}
   - audioName: 94
     audioAsset: {fileID: 11400000, guid: c5e3e055c22de1844abe472a2448beac, type: 2}
+  - audioName: 100
+    audioAsset: {fileID: 11400000, guid: 94d0c383bf37b95498b110ebedd04967, type: 2}

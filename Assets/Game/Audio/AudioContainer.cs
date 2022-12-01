@@ -13,7 +13,7 @@ namespace GS.AudioAsset
 
     public enum AudioName
     {
-        SWORD_SLASH = 10, SWORD_SLASH_3,
+        SWORD_SLASH = 10, SWORD_SLASH_3, ARROW_SHOT,
         JUMP = 20, JUMP_2,
         LANDED = 30, LANDED_2,
         JUMP_INTO_WATER = 40,
@@ -21,7 +21,8 @@ namespace GS.AudioAsset
         DIE = 60,
         WATER = 70,
         CAVE = 80,
-        ENEMY_DEATH = 90, ENEMY_DEATH_2, ENEMY_DEATH_3, ENEMY_DEATH_4, ENEMY_DEATH_5
+        ENEMY_DEATH = 90, ENEMY_DEATH_2, ENEMY_DEATH_3, ENEMY_DEATH_4, ENEMY_DEATH_5,
+        PROJECTILE_WATER = 100
     }
 
     [Serializable]

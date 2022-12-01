@@ -23,6 +23,8 @@ namespace GS.AudioAsset
 
                 if (audioSourceScript == null) audioSourceScript = animator.transform.parent.GetComponent<AudioSourceScript>();
 
+                if (audioSourceScript == null) audioSourceScript = animator.transform.parent.parent.GetComponent<AudioSourceScript>();
+
             }
 
             if (audioPlayTimeInAnimation == AudioPlayTimeInAnimation.OnStateEnter && audioName.Count > 0)
