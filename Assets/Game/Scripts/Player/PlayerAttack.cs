@@ -104,7 +104,7 @@ namespace GS.FanstayWorld2D.Player
 
         private void BowAttack()
         {
-            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.FIRE_2);
+            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.LIGHTNING);
             go.SetActive(false);
             go.transform.SetPositionAndRotation(arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             go.SetActive(true);
