@@ -22,6 +22,7 @@ MonoBehaviour:
     itemStatus: 0
   gameBenifits:
     Attack: 4
+    projectileType: 4
   characterViwerData:
     Path: Bow 02
     Color1: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}

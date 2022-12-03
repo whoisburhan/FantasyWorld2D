@@ -120,15 +120,6 @@ namespace GS.FanstayWorld2D.Player
             }
         }
 
-        private void UpdateWeapon(int playerWeapon)
-        {
-            
-            characterviewer.EquipPart(playerWeapon == 2 ? SlotCategory.OffHand : SlotCategory.MainHand, WeaponList[playerWeapon]);
-        }
-        private void GetActiveWeaponDetails(SelectedStoreData data)
-        {
-            selectedStoreData = data;
-        }
 
         [Header("Particles")]
         public ParticleSystem JumpParticles, LaunchParticles;

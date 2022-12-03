@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GS.FanstayWorld2D.Projectile;
+using System;
 
 namespace GS.FanstayWorld2D.Player
 {
@@ -23,6 +24,25 @@ namespace GS.FanstayWorld2D.Player
         [Header("Projectile Spawn Point")]
         [SerializeField] private Transform arrowSpawnPoint;
         [SerializeField] private Transform projectileSpawnPoint;
+
+        private int punchAttackPow = 5, swordAttackPow = 10;
+
+        private void OnEnable()
+        {
+            GameData.OnLoadData += OnStoreDataUpdate;
+            GameData.OnSaveData += OnStoreDataUpdate;
+        }
+
+        private void OnDisable()
+        {
+            GameData.OnLoadData -= OnStoreDataUpdate;
+            GameData.OnSaveData -= OnStoreDataUpdate;
+        }
+
+        private void OnStoreDataUpdate(SelectedStoreData data)
+        {
+            swordAttackPow = data.Sword.gameBenifits.Attack;
+        }
 
         void Update()
         {
@@ -81,7 +101,7 @@ namespace GS.FanstayWorld2D.Player
                     foreach (var col in detectedObj)
                     {
                         Debug.Log(col.name);
-                        col.transform.SendMessage("Damage", 5);
+                        col.transform.SendMessage("Damage", punchAttackPow);
                     }
                 }
             }));
@@ -96,7 +116,7 @@ namespace GS.FanstayWorld2D.Player
                     foreach (var col in detectedObj)
                     {
                         Debug.Log(col.name);
-                        col.transform.SendMessage("Damage", 10);
+                        col.transform.SendMessage("Damage", swordAttackPow);
                     }
                 }
             }));
@@ -104,7 +124,7 @@ namespace GS.FanstayWorld2D.Player
 
         private void BowAttack()
         {
-            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.LIGHTNING);
+            GameObject go = ProjectileController.Instance.GetActiveProjectile();
             go.SetActive(false);
             go.transform.SetPositionAndRotation(arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             go.SetActive(true);
@@ -112,7 +132,7 @@ namespace GS.FanstayWorld2D.Player
 
         private void WandAttack()
         {
-            GameObject go = ProjectileController.Instance.GetProjectile(ProjectileType.ICE);
+            GameObject go = ProjectileController.Instance.GetActiveProjectile();
             go.SetActive(false);
             go.transform.SetPositionAndRotation(projectileSpawnPoint.position, projectileSpawnPoint.rotation);
             go.SetActive(true);

@@ -279,6 +279,7 @@ namespace GS.FanstayWorld2D.Enemy
 
         public void Damage(int damageAmount)
         {
+            Debug.Log($"DAMAGE AMOUNT: {damageAmount}");
             health -= damageAmount;
             enemyState = EnemyState.Hurt;
             enemyHealth.SetHealth(health, maxHealth);

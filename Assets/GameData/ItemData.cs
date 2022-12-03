@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using GS.FanstayWorld2D.Projectile;
 
 namespace GS.FanstayWorld2D
 {
@@ -22,6 +23,7 @@ namespace GS.FanstayWorld2D
         public Sprite displayImg;
         public Sprite protraitImg;
         public ItemType itemType;
+
     }
 
     [Serializable]
@@ -44,6 +46,7 @@ namespace GS.FanstayWorld2D
     public class GameBenifits
     {
         public int Attack;
+        public ProjectileType projectileType;
     }
 
     [Serializable]

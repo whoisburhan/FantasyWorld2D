@@ -5,6 +5,7 @@ using UnityEngine;
 using CharacterCreator2D;
 using GS.FanstayWorld2D.UI;
 using GS.FanstayWorld2D.Player;
+using GS.FanstayWorld2D.Projectile;
 
 namespace GS.FanstayWorld2D
 {
@@ -12,7 +13,7 @@ namespace GS.FanstayWorld2D
     {
         public CharacterViewer character;
 
-       // private const string OUTFIT_PATH = ;
+        // private const string OUTFIT_PATH = ;
 
         private SelectedStoreData selectedStoreData;
 
@@ -75,6 +76,7 @@ namespace GS.FanstayWorld2D
             PlayerAnimation.Instance.SwitchWeapon(weapon);
 
             CharacterViwerData temp;
+            GameBenifits tempBenifits;
             switch (weapon)
             {
                 case 0:
@@ -89,11 +91,15 @@ namespace GS.FanstayWorld2D
                     temp = selectedStoreData.Bow.characterViwerData;
                     UpdateEquipePart(SlotCategory.OffHand, temp.Path);
                     UpdatePlayerWeaponColor(SlotCategory.OffHand, temp);
+                    tempBenifits = selectedStoreData.Bow.gameBenifits;
+                    ProjectileController.Instance.SetActiveProjectile(tempBenifits.projectileType, tempBenifits.Attack);
                     break;
                 case 3:
                     temp = selectedStoreData.Wand.characterViwerData;
                     UpdateEquipePart(SlotCategory.MainHand, temp.Path);
                     UpdatePlayerWeaponColor(SlotCategory.MainHand, temp);
+                    tempBenifits = selectedStoreData.Wand.gameBenifits;
+                    ProjectileController.Instance.SetActiveProjectile(tempBenifits.projectileType, tempBenifits.Attack);
                     break;
 
             }

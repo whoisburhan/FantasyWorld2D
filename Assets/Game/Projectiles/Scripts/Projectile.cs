@@ -50,6 +50,11 @@ namespace GS.FanstayWorld2D.Projectile
                 rb2d.velocity = transform.right * projectTileSpeed * Time.deltaTime;
         }
 
+        public void UpdateAtkPower(int power)
+        {
+            attackPower = power;
+        }
+
         public static void UpdateLifeShell(float newLifeShell)
         {
             lifeShell = newLifeShell;

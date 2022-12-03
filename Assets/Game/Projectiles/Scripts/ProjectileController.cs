@@ -12,6 +12,8 @@ namespace GS.FanstayWorld2D.Projectile
         [Header("Particles Samples")]
         [SerializeField] private List<ParticleInfo> particleContainer;
 
+        private ProjectileType activeProjectileType;
+
         private void Awake()
         {
             if (Instance == null)
@@ -24,7 +26,29 @@ namespace GS.FanstayWorld2D.Projectile
             }
         }
 
-        public GameObject GetProjectile(ProjectileType type)
+        public void SetActiveProjectile(ProjectileType type, int power)
+        {
+            activeProjectileType = type;
+            SetProjectilePower(activeProjectileType,power);
+
+        }
+        public GameObject GetActiveProjectile()
+        {
+            return GetProjectile(activeProjectileType);
+        }
+        
+        private void SetProjectilePower(ProjectileType type, int power)
+        {
+            foreach(var projectile in container)
+            {
+                if(projectile.projectileType == type)
+                {
+                    projectile.SetProjectilePower(power);
+                    return;
+                }
+            }
+        }
+        private GameObject GetProjectile(ProjectileType type)
         {
             foreach(var projectile in container)
             {
@@ -55,7 +79,7 @@ namespace GS.FanstayWorld2D.Projectile
 
     public enum ProjectileType
     {
-        ICE, FIRE, WATER, COMET, FIRE_2, LIGHTNING
+        None = -1, ICE, FIRE, WATER, COMET, FIRE_2, LIGHTNING
     }
 
     public enum ParticleType

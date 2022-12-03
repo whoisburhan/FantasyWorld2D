@@ -22,6 +22,7 @@ MonoBehaviour:
     itemStatus: 1
   gameBenifits:
     Attack: 5
+    projectileType: -1
   characterViwerData:
     Path: Sword 00
     Color1: {r: 0.72156864, g: 0.6, b: 0.48235294, a: 1}

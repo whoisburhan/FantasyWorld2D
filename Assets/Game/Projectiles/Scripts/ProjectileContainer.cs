@@ -15,12 +15,21 @@ namespace GS.FanstayWorld2D.Projectile
     {
         private int counter = -1;
         public ProjectileType projectileType;
-        public List<GameObject> projectileObjs;
+        public List<Projectile> projectileObjs;
+
+        public void SetProjectilePower(int power)
+        {
+            foreach(var projectile in projectileObjs)
+            {
+                projectile.UpdateAtkPower(power);
+            }
+        }
 
         public GameObject GetProjectile()
         {
             counter++;
-            return projectileObjs[counter % projectileObjs.Count];
+            projectileObjs[counter % projectileObjs.Count].gameObject.SetActive(true);
+            return projectileObjs[counter % projectileObjs.Count].gameObject;
         }
 
     }
