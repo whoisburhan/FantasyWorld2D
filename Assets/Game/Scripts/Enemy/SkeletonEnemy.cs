@@ -17,7 +17,9 @@ namespace GS.FanstayWorld2D.Enemy
         [SerializeField] private GameObject fireBallPrefab;
         [SerializeField] private Transform fireBallSpawnPoint;
 
-        private void Start()
+        private bool gotHurtFromLongRange = false;
+
+        protected override void Start()
         {
             base.Start();
 
@@ -31,7 +33,7 @@ namespace GS.FanstayWorld2D.Enemy
             animator.SetInteger(enemyNo, (int)skeletonEnemyType);
         }
 
-        private void Update()
+        protected override void Update()
         {
             base.Update();
         }
@@ -61,6 +63,7 @@ namespace GS.FanstayWorld2D.Enemy
                         //animator.SetTrigger(die);
                         break;
                 }
+
             }
         }
 

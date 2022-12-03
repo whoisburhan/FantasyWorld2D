@@ -44,7 +44,7 @@ namespace GS.FanstayWorld2D.Enemy
         [SerializeField] private bool isPetrolRandomPoint;
 
 
-        protected void Start()
+        protected virtual void Start()
         {
             animator = GetComponent<Animator>();
             sr = GetComponent<SpriteRenderer>();
@@ -62,7 +62,7 @@ namespace GS.FanstayWorld2D.Enemy
             #endregion
 
         }
-        protected void Update()
+        protected virtual void Update()
         {
             CheckState();
             //if (enemyState != EnemyState.Die) CheckState();
@@ -171,7 +171,7 @@ namespace GS.FanstayWorld2D.Enemy
         }
         protected virtual void IdleState()
         {
-
+            
         }
 
         protected virtual void PatrolState()
@@ -230,6 +230,11 @@ namespace GS.FanstayWorld2D.Enemy
             }
         }
 
+        // Used By animation
+        public void UpdateHurtState()
+        {
+            enemyState = EnemyState.Hurt;
+        }
         protected virtual void HurtState()
         {
             
