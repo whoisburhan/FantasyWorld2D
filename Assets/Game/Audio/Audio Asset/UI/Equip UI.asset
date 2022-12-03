@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b50b85dc32ae8a4ab3d15f3fe6e51be, type: 3}
+  m_Name: Equip UI
+  m_EditorClassIdentifier: 
+  FileName: Equip UI
+  Clip: {fileID: 8300000, guid: 0c792ce0c609f4a449060b8f4f8493bc, type: 3}
+  Source: https://freesound.org/people/mrickey13/sounds/518850/
+  Description: This work is licensed under the Creative Commons 0 License.

@@ -23,7 +23,8 @@ namespace GS.AudioAsset
         CAVE = 80,
         ENEMY_DEATH = 90, ENEMY_DEATH_2, ENEMY_DEATH_3, ENEMY_DEATH_4, ENEMY_DEATH_5,
         PROJECTILE_WATER = 100, PROJECTILE_FIRE, PROJECTILE_ICE,
-        COIN = 110
+        COIN = 110,
+        UI_CLICK = 120, UI_EQUIPE
     }
 
     [Serializable]
