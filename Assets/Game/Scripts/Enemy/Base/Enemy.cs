@@ -230,11 +230,6 @@ namespace GS.FanstayWorld2D.Enemy
             }
         }
 
-        // Used By animation
-        public void UpdateHurtState()
-        {
-            enemyState = EnemyState.Hurt;
-        }
         protected virtual void HurtState()
         {
             

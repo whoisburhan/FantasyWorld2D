@@ -24,19 +24,4 @@ namespace GS.FanstayWorld2D.Projectile
         }
 
     }
-
-    [Serializable]
-    public class ParticleInfo
-    {
-        private int counter = -1;
-        public ParticleType particleType;
-        public List<GameObject> particleObjs;
-
-        public GameObject GetParticle()
-        {
-            counter++;
-            return particleObjs[counter % particleObjs.Count];
-        }
-
-    }
 }
