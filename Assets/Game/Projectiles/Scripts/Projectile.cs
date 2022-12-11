@@ -65,10 +65,9 @@ namespace GS.FanstayWorld2D.Projectile
             this.gameObject.SetActive(false);
         }
 
-        private void OnTriggerEnter2D(Collider2D col)
+        protected virtual void OnTriggerEnter2D(Collider2D col)
         {
 
-            
             Debug.Log($"COLLIDE {col.gameObject.name}");
             if (!projectileHasCollision)
             {

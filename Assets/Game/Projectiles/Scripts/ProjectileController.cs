@@ -9,6 +9,7 @@ namespace GS.FanstayWorld2D.Projectile
         public static ProjectileController Instance { get; private set; }
         [Header("Projectile Samples")]
         [SerializeField] private List<ProjectileInfo> container;
+        
         [Header("Particles Samples")]
         [SerializeField] private List<ParticleInfo> particleContainer;
 
@@ -48,7 +49,7 @@ namespace GS.FanstayWorld2D.Projectile
                 }
             }
         }
-        private GameObject GetProjectile(ProjectileType type)
+        public GameObject GetProjectile(ProjectileType type)
         {
             foreach(var projectile in container)
             {
@@ -79,7 +80,8 @@ namespace GS.FanstayWorld2D.Projectile
 
     public enum ProjectileType
     {
-        None = -1, ICE, FIRE, WATER, COMET, FIRE_2, LIGHTNING
+        None = -1, ICE, FIRE, WATER, COMET, FIRE_2, LIGHTNING,
+        __ENEMY__ = 50, BAT
     }
 
     public enum ParticleType

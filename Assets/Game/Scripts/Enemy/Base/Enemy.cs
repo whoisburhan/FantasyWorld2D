@@ -4,7 +4,7 @@ using GS.AudioAsset;
 using GS.FanstayWorld2D.Player;
 using UnityEngine;
 
-namespace GS.FanstayWorld2D.Enemy
+namespace GS.FanstayWorld2D.Enemy.old
 {
     public enum EnemyState
     {

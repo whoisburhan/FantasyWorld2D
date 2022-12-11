@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GS.FanstayWorld2D;
 
-namespace GS.FanstayWorld2D.Enemy
+namespace GS.FanstayWorld2D.Enemy.old
 {
     public enum SkeletonEnemyType
     {
