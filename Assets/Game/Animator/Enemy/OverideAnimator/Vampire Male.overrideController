@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Vampire Male
+  m_Controller: {fileID: 9100000, guid: 9781761b4a31d5d43a746baffead8917, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e8f1e4fdf070e5b4dac05a707bb92e3e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cbe914d3592bea94387fa04ba49472d3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: b02bea0715867a347b002d8755fdb3e4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 85f6d632cd7a9b247994bab0d944c618, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: da3397efe0e457542a6152b9dfba3ac8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 92ec7bd286d2ed44eb38a4b3cdb4338e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 68bca9524e2f3a047bb6fbd2890e0028, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 37bf7680b23b8904ea68a1b8c3a4cb39, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a0c76dc63052af6458439f965412506b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 91e73a745faf25548ac5b80bc96b9738, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 8b510c3ec5b6a4345ad04c0acd22cb3b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 653b92539bfd1c245a91cd05fc772c37, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9ef9febd03da6db4f9a96ede5e7d1e5a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 10dc074e111e1b546bb445313a97e337, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2f06a63444ff51a44ac98dff244f904f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e862f9ae4cc9d7546be9c427f3f12634, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 30031e290e9fecc4eb70b1e1d0efad0c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7b3a6410c2950384185ce28c718d14b3, type: 2}
