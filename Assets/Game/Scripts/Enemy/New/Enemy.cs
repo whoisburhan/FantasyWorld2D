@@ -26,7 +26,10 @@ namespace GS.FanstayWorld2D.Enemy
         private EnemyState currentState;
         private EnemyAttackType enemyAttackType;
         private ProjectileType projectileType;
-        private bool canCheckState = true;
+        private float attackRecoilTime;
+        private float attackRecoilTimer;
+        private bool canAttack = true;
+        public bool canCheckState = true;
         private bool canPetrol = true, canChase;
         private int attackPower = 10; // just for taste purpose
         private Vector2 projectileSpawnPointOffset;
@@ -54,6 +57,7 @@ namespace GS.FanstayWorld2D.Enemy
         private void Update()
         {
             OnUpdateCall();
+            UpdateAttackRecoilTime();
         }
 
         #endregion
@@ -73,8 +77,12 @@ namespace GS.FanstayWorld2D.Enemy
                 if (target != null)
                 {
                     /* Attack */
-                    currentState = EnemyState.ATTACK_SHORT_RANGE;
-                    enmeyAnimation.UpdateAnimationState(currentState);
+                    if (canAttack)
+                    {
+                        currentState = EnemyState.ATTACK_SHORT_RANGE;
+                        enmeyAnimation.UpdateAnimationState(currentState);
+                        canAttack = false;
+                    }
                 }
                 else
                 {
@@ -84,8 +92,14 @@ namespace GS.FanstayWorld2D.Enemy
                         if (enemyAttackType == EnemyAttackType.LONG_RANGE || enemyAttackType == EnemyAttackType.BOTH)
                         {
                             // Attack Long Range
-                            currentState = EnemyState.ATTACK_LONG_RANGE;
-                            enmeyAnimation.UpdateAnimationState(currentState);
+                            enemyPetrol.CheckAndSetDirection(target.position);
+
+                            if (canAttack)
+                            {
+                                currentState = EnemyState.ATTACK_LONG_RANGE;
+                                enmeyAnimation.UpdateAnimationState(currentState);
+                                canAttack = false;
+                            }
                         }
                         else if (canChase)
                         {
@@ -130,6 +144,19 @@ namespace GS.FanstayWorld2D.Enemy
         }
         protected virtual void OnDisableCall() { }
         #endregion
+
+        private void UpdateAttackRecoilTime()
+        {
+            if (!canAttack)
+            {
+                attackRecoilTimer -= Time.deltaTime;
+                if (attackRecoilTimer <= 0f)
+                {
+                    canAttack = true;
+                    attackRecoilTimer = attackRecoilTime;
+                }
+            }
+        }
 
         #region Function's that will use by the animator/animation
         public void UpdateCheckStatePermission(int permission)
@@ -189,13 +216,16 @@ namespace GS.FanstayWorld2D.Enemy
         {
             // Dummy Value For the test
             var enemyInfo = EnemyContainer.Instance.GetEnemyInfo(enemySpecies);
-            
-            enemeyHealth.SetHealth(enemyInfo.enemyMaxHealth,enemyInfo.enemyMaxHealth);
+
+            enemeyHealth.SetHealth(enemyInfo.enemyMaxHealth, enemyInfo.enemyMaxHealth);
 
             enmeyAnimation.UpdateAnimatorController(enemyInfo.controller);
 
             canPetrol = enemyInfo.canPerol;
             canChase = enemyInfo.canChase;
+
+            attackRecoilTime = enemyInfo.attackRecoilTime;
+            attackRecoilTimer = attackRecoilTime;
 
             canCheckState = true;
         }

@@ -21,29 +21,29 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: a88f882f721e2ea41990587b4cb9fc44, type: 3}
-    - time: 0.041666668
+    - time: 0.05
       value: {fileID: 21300000, guid: c7dde753632853347b45e80358518d9b, type: 3}
-    - time: 0.083333336
+    - time: 0.1
       value: {fileID: 21300000, guid: 21cf776a9d6ea574d857efcba61a69aa, type: 3}
-    - time: 0.125
+    - time: 0.15
       value: {fileID: 21300000, guid: 65a29e2c1542cb242be847ea43145c0d, type: 3}
-    - time: 0.16666667
+    - time: 0.2
       value: {fileID: 21300000, guid: 2596e659cc4eb1f4d976f8da0a3ff4b3, type: 3}
-    - time: 0.20833333
-      value: {fileID: 21300000, guid: 0802ca407fc62f2478be1f99164c6f59, type: 3}
     - time: 0.25
+      value: {fileID: 21300000, guid: 0802ca407fc62f2478be1f99164c6f59, type: 3}
+    - time: 0.3
       value: {fileID: 21300000, guid: 2f294e799620edd4c96ff1e9aa5468be, type: 3}
-    - time: 0.29166666
+    - time: 0.35
       value: {fileID: 21300000, guid: a5115650deca4e14fa9a03d3119566ae, type: 3}
-    - time: 0.33333334
+    - time: 0.4
       value: {fileID: 21300000, guid: eda50683b01fd0d4485438c10191e04f, type: 3}
-    - time: 0.375
+    - time: 0.45
       value: {fileID: 21300000, guid: b709c4b11d4d1f540ba7fa9b4e0db795, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 24
+  m_SampleRate: 20
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -73,7 +73,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,7 +93,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0
+    functionName: UpdateCheckStatePermission
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6
     functionName: DeactivateEnemy
     data: 
     objectReferenceParameter: {fileID: 0}

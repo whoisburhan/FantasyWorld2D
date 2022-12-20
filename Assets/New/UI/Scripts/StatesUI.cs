@@ -15,7 +15,7 @@ namespace GS.FanstayWorld2D.UI
         [SerializeField] private Text ArrowText;
         [SerializeField] private Text CoinText;
         [SerializeField] private Text CurrentSessionTimeText;
-        [SerializeField] private Text GamePlayTimeText;
+        [SerializeField] private Text TotalGamePlayTimeText;
         #endregion
 
         #region  Active Character Outfits
@@ -65,6 +65,11 @@ namespace GS.FanstayWorld2D.UI
             UpdateActiveSwordWeaponUI(data.Sword != null ? data.Sword.generalInfo.displayImg : null);
             UpdateActiveBowWeaponUI(data.Bow != null ? data.Bow.generalInfo.displayImg : null);
             UpdateActiveWandWeaponUI(data.Wand != null ? data.Wand.generalInfo.displayImg : null);
+
+            // Update Game States
+            UpdateCurrentSessionTimeInUI(data.CurrentSessionTime);
+            UpdateTotalGamePlayTimeInUI(data.TotalGamePlayTime);
+            UpdateCoinInUI(data.CoinAmount);
         }
 
         #region Updates States
@@ -95,7 +100,7 @@ namespace GS.FanstayWorld2D.UI
 
         private void UpdateTotalGamePlayTimeInUI(int timeInseconds)
         {
-            GamePlayTimeText.text = $"GAMEPLAY TIME : {SecondsToString(timeInseconds)}";
+            TotalGamePlayTimeText.text = $"GAMEPLAY TIME : {SecondsToString(timeInseconds)}";
         }
         private string SecondsToString(int timeInseconds)
         {
@@ -148,7 +153,6 @@ namespace GS.FanstayWorld2D.UI
             mermaidImg.sprite = mermaid;
             mermaidAttackSpellImg.sprite = weapon;
         }
-
 
         #endregion
     }

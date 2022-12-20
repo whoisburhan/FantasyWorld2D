@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpecies: 1
   controller: {fileID: 22100000, guid: ff6e22ffa9d03df43ad4e69f44a3a75b, type: 2}
-  enemyAttackType: 0
+  enemyAttackType: 1
   enemyAtkPow: 10
+  attackRecoilTime: 0
   enemySpeed: 10
   enemySpeedAtChase: 12
   enemyMaxHealth: 20

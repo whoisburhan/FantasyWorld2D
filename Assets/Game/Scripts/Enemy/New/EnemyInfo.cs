@@ -12,6 +12,7 @@ namespace GS.FanstayWorld2D.Enemy
         public AnimatorOverrideController controller;
         public EnemyAttackType enemyAttackType;
         public int enemyAtkPow;
+        public float attackRecoilTime;
         public float enemySpeed;
         public float enemySpeedAtChase;
         public int enemyMaxHealth;

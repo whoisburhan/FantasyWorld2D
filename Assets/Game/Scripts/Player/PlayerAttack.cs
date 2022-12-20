@@ -53,6 +53,20 @@ namespace GS.FanstayWorld2D.Player
             {
                 if (PlayerController.Instance.Attack_1)
                 {
+                    if(PlayerConstant.Instance.PlayerWeapon != (int)PlayerWeapon.Sword)
+                        PlayerConstant.Instance.PlayerWeapon = (int) PlayerWeapon.Sword;
+                    Attack_1();
+                }
+                if (PlayerController.Instance.Attack_2)
+                {
+                    if(PlayerConstant.Instance.PlayerWeapon != (int)PlayerWeapon.Bow)
+                        PlayerConstant.Instance.PlayerWeapon = (int) PlayerWeapon.Bow;
+                    Attack_1();
+                }
+                if (PlayerController.Instance.Attack_3)
+                {
+                    if(PlayerConstant.Instance.PlayerWeapon != (int)PlayerWeapon.Wand)
+                        PlayerConstant.Instance.PlayerWeapon = (int) PlayerWeapon.Wand;
                     Attack_1();
                 }
             }

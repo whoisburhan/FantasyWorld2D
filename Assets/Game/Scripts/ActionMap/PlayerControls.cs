@@ -73,6 +73,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Attack_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b499a1a-80db-4495-af3b-717e29963549"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""39b1be22-0e0d-4727-bd29-d4ef0e075a96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Switch_Weapon"",
                     ""type"": ""Button"",
                     ""id"": ""c19de384-8b3f-42cd-9456-00291368a7cd"",
@@ -159,6 +177,61 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Joystick"",
+                    ""id"": ""5a5b81f1-4bcd-4302-97cc-16f5aa7e13d6"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_X"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""52dfa52f-cf85-44e0-b6b3-d17df7b2d20e"",
+                    ""path"": ""<HID:: USB Gamepad          >/hat/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""646314c9-652c-4023-8ef9-e1c56c60598d"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""7d62b574-3b65-4b38-8afe-fbdbe57994d4"",
+                    ""path"": ""<HID:: USB Gamepad          >/hat/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""34ab5586-2260-45fe-a54e-7a85416b4936"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move_X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""51478924-e0ac-4915-950c-e5fa830bab0a"",
                     ""path"": ""<Keyboard>/leftShift"",
@@ -171,8 +244,30 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""99dcc57d-0177-4f84-b773-74b878c43772"",
+                    ""path"": ""<HID:: USB Gamepad          >/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4650e1c4-cf84-4207-82ba-c1dc6563d591"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""776f5d8a-1361-4864-9c59-01c8e0fbbfc5"",
+                    ""path"": ""<HID:: USB Gamepad          >/button3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -259,6 +354,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""a5d4f02e-5e59-48a9-987b-3ccd42f34bdf"",
+                    ""path"": ""<HID:: USB Gamepad          >/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9020dd39-771c-4f0f-bec6-ad0691cfae83"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
@@ -276,6 +382,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Switch_Character"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01ffbcf2-0736-4e65-8d4d-f09463345334"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3994946e-248f-4a42-8da8-68f40e046b05"",
+                    ""path"": ""<HID:: USB Gamepad          >/button6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c045e64f-0c45-4054-96fb-aeb5e8781a2a"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcd249a8-9360-4ae9-9eaa-6f3ccc8b3050"",
+                    ""path"": ""<HID:: USB Gamepad          >/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack_3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -835,6 +985,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Land_Jump = m_Land.FindAction("Jump", throwIfNotFound: true);
         m_Land_Move_Y = m_Land.FindAction("Move_Y", throwIfNotFound: true);
         m_Land_Attack_1 = m_Land.FindAction("Attack_1", throwIfNotFound: true);
+        m_Land_Attack_2 = m_Land.FindAction("Attack_2", throwIfNotFound: true);
+        m_Land_Attack_3 = m_Land.FindAction("Attack_3", throwIfNotFound: true);
         m_Land_Switch_Weapon = m_Land.FindAction("Switch_Weapon", throwIfNotFound: true);
         m_Land_Switch_Character = m_Land.FindAction("Switch_Character", throwIfNotFound: true);
         // Water
@@ -916,6 +1068,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_Jump;
     private readonly InputAction m_Land_Move_Y;
     private readonly InputAction m_Land_Attack_1;
+    private readonly InputAction m_Land_Attack_2;
+    private readonly InputAction m_Land_Attack_3;
     private readonly InputAction m_Land_Switch_Weapon;
     private readonly InputAction m_Land_Switch_Character;
     public struct LandActions
@@ -927,6 +1081,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Land_Jump;
         public InputAction @Move_Y => m_Wrapper.m_Land_Move_Y;
         public InputAction @Attack_1 => m_Wrapper.m_Land_Attack_1;
+        public InputAction @Attack_2 => m_Wrapper.m_Land_Attack_2;
+        public InputAction @Attack_3 => m_Wrapper.m_Land_Attack_3;
         public InputAction @Switch_Weapon => m_Wrapper.m_Land_Switch_Weapon;
         public InputAction @Switch_Character => m_Wrapper.m_Land_Switch_Character;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
@@ -953,6 +1109,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack_1.started -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_1;
                 @Attack_1.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_1;
                 @Attack_1.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_1;
+                @Attack_2.started -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_2;
+                @Attack_2.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_2;
+                @Attack_2.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_2;
+                @Attack_3.started -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_3;
+                @Attack_3.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_3;
+                @Attack_3.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnAttack_3;
                 @Switch_Weapon.started -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
                 @Switch_Weapon.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
                 @Switch_Weapon.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnSwitch_Weapon;
@@ -978,6 +1140,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Attack_1.started += instance.OnAttack_1;
                 @Attack_1.performed += instance.OnAttack_1;
                 @Attack_1.canceled += instance.OnAttack_1;
+                @Attack_2.started += instance.OnAttack_2;
+                @Attack_2.performed += instance.OnAttack_2;
+                @Attack_2.canceled += instance.OnAttack_2;
+                @Attack_3.started += instance.OnAttack_3;
+                @Attack_3.performed += instance.OnAttack_3;
+                @Attack_3.canceled += instance.OnAttack_3;
                 @Switch_Weapon.started += instance.OnSwitch_Weapon;
                 @Switch_Weapon.performed += instance.OnSwitch_Weapon;
                 @Switch_Weapon.canceled += instance.OnSwitch_Weapon;
@@ -1133,6 +1301,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnMove_Y(InputAction.CallbackContext context);
         void OnAttack_1(InputAction.CallbackContext context);
+        void OnAttack_2(InputAction.CallbackContext context);
+        void OnAttack_3(InputAction.CallbackContext context);
         void OnSwitch_Weapon(InputAction.CallbackContext context);
         void OnSwitch_Character(InputAction.CallbackContext context);
     }

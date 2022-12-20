@@ -15,7 +15,6 @@ namespace GS.FanstayWorld2D.Player
     {
         Human = 0, Mermaid, Cursed_Ball
     }
-
     public class PlayerConstant : MonoBehaviour
     {
         public static PlayerConstant Instance { get; private set; }

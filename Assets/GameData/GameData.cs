@@ -17,6 +17,9 @@ namespace GS.FanstayWorld2D
         public int[] Wand = new int[5] { 2, 0, 0, 0, 0 };
         public int[] Mermaid = new int[2] { 2, 0 };
 
+        //------------------- Game Play Time
+        public int TotalGamePlayTime { get; set; }
+        public int LastSessionGamePlayTime { get; set; }
         //----------------------------------------------------------------------------
         public int[] Balls = new int[10] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         public int[] Grounds = new int[8] { 2, 0, 0, 0, 0, 0, 0, 0 };
@@ -37,6 +40,9 @@ namespace GS.FanstayWorld2D
         public ItemData Bow;
         public ItemData Wand;
         public ItemData MermaidOutfit;
+        public int CoinAmount;
+        public int CurrentSessionTime;
+        public int TotalGamePlayTime;
     }
 
     public class GameData : MonoBehaviour
@@ -60,6 +66,9 @@ namespace GS.FanstayWorld2D
 
         private bool updateShopItemStatusPermissible = true;
         private SelectedStoreData selectedStoreData = new SelectedStoreData();
+
+        public float currentSessionTime = 0f;
+        private bool oneTimeInEverySessionflag = true;
 
         [Header("Logic")]
 
@@ -96,10 +105,23 @@ namespace GS.FanstayWorld2D
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.I)) OnLoadData?.Invoke(selectedStoreData);
+
+            currentSessionTime += Time.deltaTime;
+        }
+
+        public void SaveGamePlayTime()
+        {
+            if(oneTimeInEverySessionflag)
+            {
+                state.TotalGamePlayTime += state.LastSessionGamePlayTime;
+                oneTimeInEverySessionflag = false;
+            }
+            state.LastSessionGamePlayTime = (int)currentSessionTime;
+            Save();
         }
 
         #region  File READ/WRITE
-        public void Save()
+        public void Save(bool updateAfterSave = true)
         {
             //If there no previous state loaded, create a new one
             if (State == null)
@@ -111,8 +133,11 @@ namespace GS.FanstayWorld2D
             formatter.Serialize(file, State);
             file.Close();
 
-            UpdateStoreData();
-            //OnSaveData?.Invoke(selectedStoreData);
+            if (updateAfterSave)
+            {
+                UpdateStoreData();
+                //OnSaveData?.Invoke(selectedStoreData);
+            }
         }
 
         public void Load()
@@ -142,7 +167,7 @@ namespace GS.FanstayWorld2D
 
         #region  UPDATE SAVE STATE
 
-      
+
         // Used By Store to save / select
         public void UpdateSaveState(ItemData itemData, int slotNo)
         {
@@ -188,7 +213,7 @@ namespace GS.FanstayWorld2D
             CurrentlySelectedMermaidOutfitIndex = GetSelectedItemIndex(State.Mermaid);
 
             // Update For Once In A Game Session
-            if(updateShopItemStatusPermissible)
+            if (updateShopItemStatusPermissible)
             {
                 UpdateShopItemStatus();
                 updateShopItemStatusPermissible = false;
@@ -200,17 +225,17 @@ namespace GS.FanstayWorld2D
 
         private void UpdateShopItemStatus()
         {
-            updateShopItemStatusFunc(storeData.Outfits,state.Outfits);
-            updateShopItemStatusFunc(storeData.Swords,state.Swords);
-            updateShopItemStatusFunc(storeData.Bows,state.Bow);
-            updateShopItemStatusFunc(storeData.Wands,state.Wand);
+            updateShopItemStatusFunc(storeData.Outfits, state.Outfits);
+            updateShopItemStatusFunc(storeData.Swords, state.Swords);
+            updateShopItemStatusFunc(storeData.Bows, state.Bow);
+            updateShopItemStatusFunc(storeData.Wands, state.Wand);
             //updateShopItemStatusFunc(storeData.Mermaids,state.Mermaid);
         }
         private void updateShopItemStatusFunc(List<ItemData> itemDatas, int[] saveStatusArr)
         {
-            for(int i = 0; i < itemDatas.Count; i++)
+            for (int i = 0; i < itemDatas.Count; i++)
             {
-                itemDatas[i].shopData.itemStatus = (ItemStatus) saveStatusArr[i];
+                itemDatas[i].shopData.itemStatus = (ItemStatus)saveStatusArr[i];
             }
         }
         private int GetSelectedItemIndex(int[] itemList)
@@ -231,6 +256,10 @@ namespace GS.FanstayWorld2D
             selectedStoreData.Bow = CurrentlySelectedBowIndex == -1 ? null : storeData.Bows[CurrentlySelectedBowIndex];
             selectedStoreData.Wand = CurrentlySelectedWandIndex == -1 ? null : storeData.Wands[CurrentlySelectedWandIndex];
             // selectedStoreData.MermaidOutfit = CurrentlySelectedMermaidOutfitIndex == -1 ? null : storeData.Mermaids[CurrentlySelectedMermaidOutfitIndex];
+
+            selectedStoreData.CurrentSessionTime = state.LastSessionGamePlayTime;
+            selectedStoreData.TotalGamePlayTime = state.TotalGamePlayTime + state.LastSessionGamePlayTime;
+            selectedStoreData.CoinAmount = state.TotalCoin;
 
             OnLoadData?.Invoke(selectedStoreData);
         }

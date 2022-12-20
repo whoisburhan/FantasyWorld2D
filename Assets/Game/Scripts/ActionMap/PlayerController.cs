@@ -11,7 +11,7 @@ namespace GS.FanstayWorld2D.Player
         private PlayerControls playerControls;
 
         [HideInInspector] public float MoveX, MoveY;
-        [HideInInspector] public bool Sprint, Jump, ReleaseJump, SwitchWeapon, Attack_1, Switch_Character;
+        [HideInInspector] public bool Sprint, Jump, ReleaseJump, SwitchWeapon, Attack_1, Attack_2, Attack_3, Switch_Character;
 
         public bool CanInput = true;
         public bool AutoRun = false;
@@ -86,6 +86,8 @@ namespace GS.FanstayWorld2D.Player
             if (PlayerConstant.Instance.CanAttack)
             {
                 Attack_1 = playerControls.Land.Attack_1.WasPressedThisFrame();
+                Attack_2 = playerControls.Land.Attack_2.WasPressedThisFrame();
+                Attack_3 = playerControls.Land.Attack_3.WasPressedThisFrame();
             }
 
             if (PlayerConstant.Instance.CanSwime)

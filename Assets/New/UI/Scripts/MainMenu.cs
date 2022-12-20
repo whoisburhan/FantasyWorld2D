@@ -12,6 +12,9 @@ namespace GS.FanstayWorld2D.UI
         [SerializeField] private Button resumeBtn;
         [SerializeField] private Button statesBtn, profileBtn, storeBtn, settingsBtn, exitBtn;
 
+        [Header("Current Menu")]
+        [SerializeField] private Text currentMenuText;
+
         [Header("Main Menu Panels")]
         [SerializeField] private UIPanel statesPanel;
         [SerializeField] private UIPanel profilePanel;
@@ -41,6 +44,7 @@ namespace GS.FanstayWorld2D.UI
             {
                 ShowPanel();
                 Time.timeScale = 0f;
+                GameData.Instance.SaveGamePlayTime();
             }
         }
 
@@ -78,6 +82,7 @@ namespace GS.FanstayWorld2D.UI
                 DeActivatePanel(currentPanel);
                 ActivatePanel(nextPanel);
                 activePanel = nextPanel;
+                currentMenuText.text = activePanel.gameObject.name;
             }
         }
 
