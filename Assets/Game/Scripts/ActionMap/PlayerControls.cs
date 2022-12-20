@@ -721,6 +721,61 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""MyJoystick"",
+                    ""id"": ""e5ccfe20-0ef4-4924-a187-e11a2f0db9b5"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""84519236-2f63-4a42-9c68-ccd3e2c4c74b"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""34cb1a61-a77a-4455-8a03-e96866a9006c"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""95000131-8683-4d34-9141-7efd88c465e2"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""859b200e-9e9a-4c0f-b50b-0b4b68455c66"",
+                    ""path"": ""<HID:: USB Gamepad          >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Navigate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""Keyboard"",
                     ""id"": ""d36d0594-fec6-415e-9a16-93b39b9650ef"",
                     ""path"": ""2DVector"",
@@ -823,6 +878,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""f66b82cf-82e8-4090-a4c1-69a2d0e8640b"",
                     ""path"": ""*/{Submit}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00160912-fab3-4c3c-bdc5-c773e8151231"",
+                    ""path"": ""<HID:: USB Gamepad          >/button2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
